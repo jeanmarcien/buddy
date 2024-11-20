@@ -1,1 +1,105 @@
-<h1>About Us</h1>
+<h1>Pages#about</h1>
+<%# app/views/pages/home.html.erb %>
+<div class="container py-5">
+  <div class="row mb-4">
+	<div class="col-12">
+	  <div class="alert alert-success" role="alert">
+		<h4 class="alert-heading">Bootstrap est bien installé !</h4>
+		<p>Alerte en vert, Bootstrap fonctionne correctement.</p>
+	  </div>
+	</div>
+  </div>
+
+  <!-- Nouvelle section avec éléments interactifs -->
+  <div class="row mb-4">
+	<div class="col-md-6">
+	  <!-- Bouton qui déclenche la modal -->
+	  <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal" 
+			  data-bs-tooltip="tooltip" title="Cliquez pour ouvrir la modal">
+		Ouvrir la Modal
+	  </button>
+
+	  <!-- Modal -->
+	  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">Modal de Test</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  <p>Si la Modal s'ouvre, le JavaScript de Bootstrap fonctionne correctement!</p>
+			  <div class="alert alert-info">
+				On peut également interagir avec ce contenu.
+			  </div>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+			  <button type="button" class="btn btn-primary">Sauvegarder</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	  <!-- Accordion -->
+	  <div class="accordion" id="testAccordion">
+		<div class="accordion-item">
+		  <h2 class="accordion-header">
+			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" 
+					data-bs-tooltip="tooltip" title="Cliquez pour voir plus">
+			  Section 1
+			</button>
+		  </h2>
+		  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#testAccordion">
+			<div class="accordion-body">
+			  Contenu de la première section de l'accordion.
+			</div>
+		  </div>
+		</div>
+		<div class="accordion-item">
+		  <h2 class="accordion-header">
+			<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+			  Section 2
+			</button>
+		  </h2>
+		  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#testAccordion">
+			<div class="accordion-body">
+			  Contenu de la deuxième section de l'accordion.
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<div class="col-md-6">
+	  <div class="card">
+		<div class="card-body">
+		  <h5 class="card-title">Test des cartes</h5>
+		  <p class="card-text">Cette carte utilise les classes Bootstrap.</p>
+		  <button class="btn btn-primary" data-bs-tooltip="tooltip" title="Un simple bouton de test">Bouton test</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+  <div class="row mb-4">
+	<div class="col-md-8">
+	  <h2 class="mb-4">Test de formulaire avec Simple Form</h2>
+	  <%= simple_form_for :test, url: '#' do |f| %>
+		<%= f.input :name, label: 'Nom', input_html: { class: 'mb-3' } %>
+		<%= f.input :email, input_html: { class: 'mb-3' } %>
+		<div class="mb-3">
+		  <%= f.button :submit, 'Envoyer', class: 'btn btn-success' %>
+		</div>
+	  <% end %>
+	</div>
+  </div>
+
+  <!-- Initialisation des tooltips -->
+  <script>
+	document.addEventListener("DOMContentLoaded", function() {
+	  const tooltipTriggerList = document.querySelectorAll('[data-bs-tooltip="tooltip"]')
+	  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+	});
+  </script>
+</div>
