@@ -1,4 +1,18 @@
-@import "config/index";
+@import "bootstrap-config/index";
 
 @import "bootstrap";
 @import "font-awesome";
+
+@import "custom-styles/index";
+@import "custom-components/index";
+
+// Global
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto !important;
+}
