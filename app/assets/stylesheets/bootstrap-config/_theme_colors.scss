@@ -1,0 +1,149 @@
+// 1. Variables de base sans dépendances
+// Base colors - grays
+$white: #fff; // ex: .text-white
+$gray-100: #f8f9fa; // ex: .bg-gray-100
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+// Base theme colors
+$blue: #223059; // ex: .bg-blue ou .btn-blue
+$light-blue: lighten($blue, 40%);
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #f28482;
+$red: #dc3545;
+$orange: #f4a258;
+$yellow: #ffc107;
+$light-yellow: #f6f3e9;
+$green: #28a745;
+$teal: #84a59d;
+$cyan: #0080a5;
+
+// Additional colors
+$off-white: #ededed;
+$dark-gray: #666;
+$medium-gray: #6c757d;
+$light-gray: #c2c2c2;
+
+// 2. Variables dérivées premier niveau
+// Theme semantic colors
+$primary: $blue; // ex: .btn-primary
+$secondary: $orange; // ex: .btn-secondary
+$success: $green; // ex: .alert-success
+$info: $cyan; // ex: .bg-info
+$warning: $yellow; // ex: .text-warning
+$danger: $red; // ex: .border-danger
+$light: $gray-100; // ex: .bg-light
+$dark: $gray-800; // ex: .text-dark
+
+// Maps - tous les noms de couleurs disponibles
+$colors: (
+  // Grays
+  "white": $white,
+  // ex: .text-white
+  "gray-100": $gray-100,
+  // ex: .bg-gray-100
+  "gray-200": $gray-200,
+  "gray-300": $gray-300,
+  "gray-400": $gray-400,
+  "gray-500": $gray-500,
+  "gray-600": $gray-600,
+  "gray-700": $gray-700,
+  "gray-800": $gray-800,
+  "gray-900": $gray-900,
+  "black": $black,
+
+  // Theme colors
+  "blue": $blue,
+  // ex: .text-blue
+  "light-blue": $light-blue,
+  // ex: .bg-light-blue
+  "indigo": $indigo,
+  "purple": $purple,
+  "pink": $pink,
+  "red": $red,
+  "orange": $orange,
+  "yellow": $yellow,
+  "light-yellow": $light-yellow,
+  "green": $green,
+  "teal": $teal,
+  "cyan": $cyan,
+
+  // Additional colors
+  "off-white": $off-white,
+  "dark-gray": $dark-gray,
+  "medium-gray": $medium-gray,
+  "light-gray": $light-gray
+);
+
+// Theme colors - couleurs disponibles pour les composants Bootstrap
+$theme-colors: (
+  // Semantic colors
+  "primary": $primary,
+  // ex: .btn-primary
+  "secondary": $secondary,
+  // ex: .btn-secondary
+  "success": $success,
+  // ex: .alert-success
+  "info": $info,
+  // ex: .bg-info
+  "warning": $warning,
+  // ex: .text-warning
+  "danger": $danger,
+  // ex: .border-danger
+  "light": $light,
+  // ex: .bg-light
+  "dark": $dark,
+
+  // ex: .text-dark
+  // Theme colors
+  "blue": $blue,
+  // ex: .btn-blue
+  "light-blue": $light-blue,
+  // ex: .btn-light-blue
+  "indigo": $indigo,
+  "purple": $purple,
+  "pink": $pink,
+  "orange": $orange,
+  "yellow": $yellow,
+  "light-yellow": $light-yellow,
+  "green": $green,
+  "teal": $teal,
+  "cyan": $cyan,
+
+  // Grays
+  "gray-100": $gray-100,
+  "gray-200": $gray-200,
+  "gray-300": $gray-300,
+  "gray-400": $gray-400,
+  "gray-500": $gray-500,
+  "gray-600": $gray-600,
+  "gray-700": $gray-700,
+  "gray-800": $gray-800,
+  "gray-900": $gray-900,
+
+  // Additional colors
+  "off-white": $off-white,
+  "dark-gray": $dark-gray,
+  "medium-gray": $medium-gray,
+  "light-gray": $light-gray
+);
+
+/* Exemples d'utilisation :
+Utilities ($colors):
+.text-{color}     // .text-blue
+.bg-{color}       // .bg-light-yellow
+.border-{color}   // .border-gray-300
+
+Components ($theme-colors):
+.btn-{color}      // .btn-primary, .btn-blue
+.alert-{color}    // .alert-warning, .alert-teal
+.badge-{color}    // .badge-success, .badge-cyan
+*/
