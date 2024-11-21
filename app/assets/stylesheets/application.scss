@@ -6,13 +6,4 @@
 @import "custom-styles/index";
 @import "custom-components/index";
 
-// Global
-body {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-footer {
-  margin-top: auto !important;
-}
+@import "pages/index";
