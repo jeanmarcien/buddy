@@ -42,6 +42,27 @@
   --bs-danger: var(--bs-red);
   --bs-light: var(--bs-gray-100);
   --bs-dark: var(--bs-gray-800);
+
+  /* Buttons colors see _buttons.scss to change */
+  --btn-primary-hover-bg: #0056b3;
+  --btn-secondary-hover-bg: #6c757d;
+  --btn-success-hover-bg: #218838;
+  --btn-danger-hover-bg: #dc3545;
+  --btn-warning-hover-bg: #ffc107;
+  --btn-info-hover-bg: #17a2b8;
+  --btn-light-hover-bg: #f8f9fa;
+  --btn-dark-hover-bg: #343a40;
+
+  --btn-primary-hover-border-color: #0056b3;
+  --btn-secondary-hover-border-color: #6c757d;
+  --btn-success-hover-border-color: #218838;
+  --btn-danger-hover-border-color: #dc3545;
+  --btn-warning-hover-border-color: #ffc107;
+  --btn-info-hover-border-color: #17a2b8;
+  --btn-light-hover-border-color: #f8f9fa;
+  --btn-dark-hover-border-color: #343a40;
+
+  --btn-hover-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 /* Exemples d'utilisation :
