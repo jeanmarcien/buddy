@@ -1,2 +1,23 @@
 <div data-page-name="<%= page_name %>">
+	<%= render "navbar" %>
+	<div class="container-fluid text-primary py-5">
+		<div class="container py-5">
+			<div class="row">
+				<div class="col-12 col-lg-8 mx-auto text-center">
+					<h1 class="display-1 display-md-2 fw-bold mb-4">Simplifying life for you and your pet</h1>
+					<p class="lead mb-4">With Buddy, organize your pet's daily life, health, nutrition and activities, and simplify your own.</p>
+				</div>
+			</div>
+			<div class="row mt-4">
+				<div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto text-center">
+					<div class="d-flex flex-column align-items-stretch gap-4"">
+						<%= link_to 'Get Started', new_user_registration_path, class:"btn btn-primary rounded-pill btn-lg px-4 flex-fill" %>
+						<%= link_to 'How does it work?', how_path, class:"btn btn-primary rounded-pill btn-lg px-4 flex-fill" %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+

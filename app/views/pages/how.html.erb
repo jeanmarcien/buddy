@@ -1,1 +1,38 @@
-<h1>How does it's work?</h1>
+<div data-page-name="<%= page_name %>">
+	<%= render "navbar" %>
+	<section class="py-5">
+		<div class="container text-primary my-5">
+			<h1 class="display-1 display-md-2 fw-bold mb-4">Buddy works in 3 simple steps...</h1>
+			<div class="row mt-4 g-4">
+				<!-- Step 1 -->
+				<div class="col-md-4">
+					<div class="step-card text-center">
+						<img src="https://picsum.photos/id/237/80/80" alt="Mobile app" class="step-icon">
+						<p class="h5 fw-bold mb-3">Access the WebApp on your browser and make a profile for your pet(s).</p>
+					</div>
+				</div>
+				
+				<!-- Step 2 -->
+				<div class="col-md-4">
+					<div class="step-card text-center">
+						<img src="https://picsum.photos/id/169/80/80" alt="Pet info" class="step-icon">
+						<p class="h5 fw-bold mb-3">Store valuable information like vaccines, weight and medical conditions.</p>
+					</div>
+				</div>
+				
+				<!-- Step 3 -->
+				<div class="col-md-4">
+					<div class="step-card text-center">
+						<img src="https://picsum.photos/id/659/80/80" alt="Health tracking" class="step-icon">
+						<p class="h5 fw-bold mb-3">Keep track of the health of your pet and never miss an important date!</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="text-center mt-5">
+				<%= link_to 'Get Started', new_user_registration_path, class:"btn btn-primary rounded-pill btn-lg px-4" %>
+			</div>
+			
+		</div>
+	</section>
+</div>
