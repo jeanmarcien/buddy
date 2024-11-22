@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
   devise_for :users
-  root to: "pages#index"
+  root to: 'dashboard#index'
   
   get 'pages/about', as: 'about'
   get 'pages/how', as: 'how'
@@ -10,4 +11,6 @@ Rails.application.routes.draw do
   
   # Rediriger toutes les autres routes non trouvées vers la page 404
   match '*path', to: 'errors#not_found', via: :all
+
+   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
 end
