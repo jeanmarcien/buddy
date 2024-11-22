@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   # Rediriger toutes les autres routes non trouvées vers la page 404
   match '*path', to: 'errors#not_found', via: :all
 
-   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+  resources :pets # Add this line to define routes for pets
+
+  get 'dashboard', to: 'dashboard#index', as: 'dashboard'
 end

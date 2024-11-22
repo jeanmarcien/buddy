@@ -45,3 +45,22 @@
   border-color: var(--btn-dark-hover-border-color);
   box-shadow: var(--btn-hover-box-shadow);
 }
+
+.btn-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #d3d3d3; // pale gray
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  &:hover {
+    background-color: #e0e0e0; // slightly lighten the pale gray color
+  }
+}
+
+.plus-sign {
+  font-size: 24px;
+  color: #000; // black
+}
