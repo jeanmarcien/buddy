@@ -18,10 +18,10 @@
 [data-page-name="pages_how"] .step-icon {
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+  // border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1.5rem;
-  filter: blur(1px);
+  // filter: blur(1px);
   transition: filter 0.3s ease;
 }
 [data-page-name="pages_how"] .step-icon:hover {
