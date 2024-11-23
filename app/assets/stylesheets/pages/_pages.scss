@@ -1,0 +1,13 @@
+[data-page-name="pages_index"] nav .logo,
+[data-page-name="pages_how"] nav .logo,
+[data-page-name="pages_about"] nav .logo,
+[data-page-name="devise_passwords_new"] nav .logo,
+[data-page-name="devise_sessions_new"] nav .logo,
+[data-page-name="devise_registrations_new"] nav .logo,
+[data-page-name="devise_registrations_create"] nav .logo  {
+  color: var(--bs-orange);
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
