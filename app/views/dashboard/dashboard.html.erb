@@ -1,11 +1,17 @@
 <!-- filepath: /root/code/fannyevepl/buddy/app/views/dashboard/index.html.erb -->
 
 
-<div class="position-absolute" style="top: 81px; left: 101px;">
-  <%= image_tag 'buddy.png', class: 'img-fluid' %>
+<div class="logo-container">
+  <%= image_tag 'buddy.png', class: 'img-fluid logo' %>
 </div>
 
-<div class="d-flex flex-column justify-content-center align-items-center" style="height: 50vh;">
+<div class="d-flex flex-column justify-content-center align-items-center mt-5">
+  <div class="d-flex justify-content-center mb-4">
+    <%= image_tag 'avatar/Padme.png', class: 'avatar' %>
+    <%= image_tag 'avatar/Vandal.png', class: 'avatar' %>
+    <%= image_tag 'avatar/Valentino.png', class: 'avatar' %>
+  </div>
+
   <%= link_to new_pet_path, class: 'btn btn-circle mb-2' do %>
     <span class="plus-sign">+</span>
   <% end %>

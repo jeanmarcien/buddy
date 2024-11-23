@@ -1,0 +1,11 @@
+/* filepath: /root/code/fannyevepl/buddy/app/assets/stylesheets/custom-styles/_custom-logo.scss */
+.logo-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.logo {
+  max-width: 50px;
+  height: auto;
+}
