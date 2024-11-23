@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
- skip_before_action :authenticate_user!, only: [:index, :about, :how]
+  before_action :redirect_if_authenticated, only: [:index, :about, :how]
+  skip_before_action :authenticate_user!, only: [:index, :about, :how]
  
  def index
  end
@@ -8,5 +9,11 @@ class PagesController < ApplicationController
  end
  
  def how
+ end
+
+ private
+
+ def redirect_if_authenticated
+   redirect_to dashboard_index_path if user_signed_in?
  end
 end
