@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_pet, only: [:update, :destroy]
 
   def index
     @pets = current_user.pets
@@ -10,7 +11,7 @@ class DashboardController < ApplicationController
   end
 
   def create
-    @pet = Pet.new(pet_params)
+    @pet = current_user.pets.build(pet_params)
     if @pet.save
       redirect_to @pet, notice: 'Pet was successfully created.'
     else
@@ -38,6 +39,6 @@ class DashboardController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :age, :breed, :birth_day, :gender )
+    params.require(:pet).permit(:name, :age, :breed, :birth_day, :gender)
   end
 end

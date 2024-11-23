@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'dashboard/index'
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
+  
+  authenticated :user do
+    root to: 'dashboard#index', as: :authenticated_root
+  end
   root to: "pages#index"
 
   get 'pages/about', as: 'about'
