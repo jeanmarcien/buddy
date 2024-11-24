@@ -4,7 +4,8 @@
 [data-page-name="devise_passwords_new"] nav .logo,
 [data-page-name="devise_sessions_new"] nav .logo,
 [data-page-name="devise_registrations_new"] nav .logo,
-[data-page-name="devise_registrations_create"] nav .logo  {
+[data-page-name="devise_registrations_create"] nav .logo,
+[data-page-name="pets_new"] nav .logo {
   color: var(--bs-orange);
   font-size: 2rem;
   font-weight: 900;

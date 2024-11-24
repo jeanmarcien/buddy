@@ -1,9 +1,9 @@
 class Pet < ApplicationRecord
   SPECIES  = [
-    “Dog”,
-    “Cat”,
-    “Rabbit”,
-    “Other”
+    "Dog",
+    "Cat",
+    "Rabbit",
+    "Other"
   ]
 
   GENDERS = [
