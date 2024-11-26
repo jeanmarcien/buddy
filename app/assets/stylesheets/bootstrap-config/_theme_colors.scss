@@ -147,3 +147,7 @@ Components ($theme-colors):
 .alert-{color}    // .alert-warning, .alert-teal
 .badge-{color}    // .badge-success, .badge-cyan
 */
+
+$navbar-light-toggler-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(244, 162, 88, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+
+$navbar-toggler-border-color: rgba(244, 162, 88, 0.75);

@@ -9,3 +9,18 @@ $headings-font-family: "Nunito", "Helvetica", sans-serif;
 
   --bs-nav-link-hover-color: var(--bs-primary);
 }
+
+.navbar-toggler {
+  border-color: orange;
+  transition: border-color 0.3s;
+  border: solid 2px orange;
+}
+
+.navbar-toggler:hover {
+  border-color: orange;
+}
+
+.navbar-toggler:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 1;
+}
