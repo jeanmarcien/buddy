@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
- skip_before_action :authenticate_user!, only: [:index, :about, :how]
+  skip_before_action :authenticate_user!, only: [:index, :about, :how], if: :devise_controller?
  
  def index
  end
@@ -9,4 +9,5 @@ class PagesController < ApplicationController
  
  def how
  end
+
 end

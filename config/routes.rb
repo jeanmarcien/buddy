@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#index"
   get 'pages/about', as: 'about'
   get 'pages/how', as: 'how'
+  get 'dashboard/index', to: 'dashboard#index', as: 'dashboard_index'
 
   # Routes principale pour Users et leur pets
   resources :users do
