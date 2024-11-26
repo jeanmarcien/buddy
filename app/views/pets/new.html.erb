@@ -28,6 +28,14 @@
             </div>
 
             <div class="mb-4 text-center">
+              <%= form.input :vet_id, collection: Vet.all.map { |vet| ["#{vet.first_name} #{vet.last_name}", vet.id] },
+                label: "<strong>Vet</strong>".html_safe,
+                prompt: "Select a vet",
+                required: false,
+                input_html: { class: "form-control text-center bg-white" } %>
+            </div>
+
+            <div class="mb-4 text-center">
               <%= form.input :birth_day, as: :date, label: "<strong>Date of Birth</strong>".html_safe, start_year: 2000, end_year: Date.today.year, required: true, input_html: { class: "form-control text-center bg-white" } %>
             </div>
 
