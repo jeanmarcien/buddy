@@ -4,3 +4,11 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.flash-message {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.flash-message.fade-out {
+  opacity: 0;
+}
