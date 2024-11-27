@@ -12,12 +12,36 @@
 
       <div class="d-flex flex-column justify-content-center align-items-center mt-5">
         <div class="d-flex justify-content-center mb-4">
+<<<<<<< HEAD
           <% @pets.each do |pet| %>
             <div class="mx-2 text-center">
               <%= link_to edit_pet_path(pet) do %>
                 <%= image_tag 'avatar/default.png', class: 'avatar' %>
                 <h5 class="card-title fw-bold mb-3"><%= pet.name %></h5>
               <% end %>
+=======
+          <%= image_tag 'avatar/Padme.png', class: 'avatar' %>
+          <%= image_tag 'avatar/Vandal.png', class: 'avatar' %>
+          <%= image_tag 'avatar/Valentino.png', class: 'avatar' %>
+        </div>
+
+        <%= link_to new_pet_path, class: 'btn btn-circle mb-2' do %>
+          <span class="plus-sign">+</span>
+        <% end %>
+        <p>Add a new pet</p>
+      </div>
+
+      <div class="container mt-4">
+        <div class="row">
+          <% @pets.each do |pet| %>
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+              <div class="card pet">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold mb-3"><%= pet.name %></h5>
+                  <%= link_to 'Manage', edit_pet_path(pet), class: "btn btn-primary rounded-pill" %>
+                </div>
+              </div>
+>>>>>>> master
             </div>
           <% end %>
         </div>
