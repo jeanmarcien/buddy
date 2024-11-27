@@ -1,0 +1,43 @@
+<div class="dashboard">
+      <div class="cards-container">
+        <div class="card" onclick="openCardDetail('<%= asset_path('pet-profile.png') %>')">
+          <div class="text">Pet Profile</div>
+        </div>
+        <div class="card" onclick="openCardDetail('<%= asset_path('health.png') %>')">
+          <div class="text">Health</div>
+        </div>
+        <div class="card" onclick="openCardDetail('<%= asset_path('nutrition.png') %>')">
+          <div class="text">Nutrition</div>
+        </div>
+        <div class="card" onclick="openCardDetail('<%= asset_path('activities.png') %>')">
+          <div class="text">Activities</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Detail Section (Initially Hidden) -->
+    <div class="card-detail hidden">
+      <div class="background-blur"></div>
+      <header>
+        <h1>Buddy.</h1>
+        <h2>Pet health summary</h2>
+        <p>
+          Your pet vaccines are up-to-date.<br />Your pet still needs 2
+          medications today.
+        </p>
+      </header>
+      <main class="info-sections">
+        <div class="info-box">
+          <h3>Vaccines</h3>
+        </div>
+        <div class="info-box">
+          <h3>Medications</h3>
+        </div>
+        <div class="info-box">
+          <h3>Weight</h3>
+        </div>
+        <div class="info-box">
+          <h3>Allergies</h3>
+        </div>
+      </main>
+    </div>
