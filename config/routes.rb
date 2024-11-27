@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pethome/index'
   devise_for :users
 
   root 'pages#index'
@@ -18,12 +19,12 @@ Rails.application.routes.draw do
 
   # Routes imbriquées pour les pets et leurs données associées
   resources :pets do
-    resources :vaccinations
-    resources :treatments
-    resources :physical_records
-    resources :nutritions
-    resources :activities
-    resources :vet_appointments
+      resources :vaccinations
+      resources :treatments
+      resources :physical_records
+      resources :nutritions
+      resources :activities
+      resources :vet_appointments
   end
 
 
