@@ -35,15 +35,24 @@
                 input_html: { class: "form-control text-center bg-white" } %>
             </div>
 
-           <div class="mb-4 text-center">
-             <%= form.input :birth_day,
-                 label: "<strong>Date of Birth</strong>".html_safe,
-                 as: :string,
-                 required: true,
-                 input_html: { 
-                   data: { controller: "datepicker" },
-                   class: "form-control text-center bg-white"
-                 } %>
+           <div class="mb-4  text-center">
+             <label class="form-label">
+               <strong>Date of Birth</strong>
+             </label>
+             <div class="input-group">
+               <%= form.input :birth_day,
+                   label: false,
+                   as: :string,
+                   required: true,
+                   wrapper: false,
+                   input_html: { 
+                     data: { controller: "datepicker" },
+                     class: "form-control text-center bg-white"
+                   } %>
+               <span class="input-group-text">
+                 <i class="fa-regular fa-calendar"></i>
+               </span>
+             </div>
            </div>
            
            <div class="d-flex justify-content-between">
