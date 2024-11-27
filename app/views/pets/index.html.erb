@@ -11,12 +11,14 @@
       </div>
 
       <div class="d-flex flex-column justify-content-center align-items-center mt-5">
-        <div class="d-flex flex-column justify-content-center align-items-center mb-4">
+        <div class="d-flex flex-row justify-content-center align-items-center mb-4">
           <% @pets.each do |pet| %>
-            <%= link_to pet_path(pet) do %>
-              <%= image_tag 'avatar/Padme.png', class: 'avatar' %>
-            <% end %>
-            <h6 class="card-title text-center text-dark mt-2"><%= pet.name %></h6>
+            <div class="d-flex flex-column justify-content-center align-items-center mx-2">
+              <%= link_to pet_path(pet) do %>
+                <%= image_tag 'avatar/Padme.png', class: 'avatar' %>
+              <% end %>
+              <h6 class="card-title text-center text-dark mt-2"><%= pet.name %></h6>
+            </div>
           <% end %>
         </div>
 
