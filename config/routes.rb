@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   get 'dashboard/index', to: 'dashboard#index', as: 'dashboard_index'
 
   # Routes principale pour Users et leur pets
-  resources :users do
-    resources :pets, shallow: true
-  end
+  # resources :users do
+  #   resources :pets, shallow: true
+  # end
 
   # Routes pour les vétérinaires
   resources :vets do
