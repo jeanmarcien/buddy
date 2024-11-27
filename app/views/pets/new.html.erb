@@ -35,9 +35,16 @@
                 input_html: { class: "form-control text-center bg-white" } %>
             </div>
 
-            <div class="mb-4 text-center">
-              <%= form.input :birth_day, as: :date, label: "<strong>Date of Birth</strong>".html_safe, start_year: 2000, end_year: Date.today.year, required: true, input_html: { class: "form-control text-center bg-white" } %>
-            </div>
+           <div class="mb-4 text-center">
+             <%= form.input :birth_day,
+                 label: "<strong>Date of Birth</strong>".html_safe,
+                 as: :string,
+                 required: true,
+                 input_html: { 
+                   data: { controller: "datepicker" },
+                   class: "form-control text-center bg-white"
+                 } %>
+           </div>
 
             <div class="text-center">
               <%= form.button :submit, "Done", class: "btn btn-primary rounded-pill btn-lg px-5" %>
