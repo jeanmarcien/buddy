@@ -1,0 +1,22 @@
+<div data-page-name="<%= page_name %>">
+	<%= render "navbar_dashboard" %>
+	<div class="container">
+		<div class="row">
+			<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb">
+				<li class="breadcrumb-item"><%= link_to 'My Pets', pets_path %></li>
+				<li class="breadcrumb-item active" aria-current="page"><%= @pet.name %></li>
+			  </ol>
+			</nav>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row mt-4">
+			<h1><%= @pet.name %></h1>
+			<p>Temp pet card - to be replace by Santiago Card</p>
+		</div>
+	</div>
+</div>
+
+		
