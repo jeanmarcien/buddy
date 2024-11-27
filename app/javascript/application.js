@@ -3,7 +3,9 @@ import "@hotwired/turbo-rails";
 import "controllers";
 import "@popperjs/core";
 import "bootstrap";
+import "flatpickr";
 
+//temp
 document.addEventListener("click", (event) => {
   const menu = document.getElementById("navbarNav");
   const burger = document.querySelector(".navbar-toggler");
