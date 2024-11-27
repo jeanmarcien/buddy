@@ -17,7 +17,7 @@
           <%= image_tag 'avatar/Valentino.png', class: 'avatar' %>
         </div>
 
-        <%= link_to new_user_pet_path(current_user), class: 'btn btn-circle mb-2' do %>
+        <%= link_to new_pet_path, class: 'btn btn-circle mb-2' do %>
           <span class="plus-sign">+</span>
         <% end %>
         <p>Add a new pet</p>
@@ -30,7 +30,7 @@
               <div class="card pet">
                 <div class="card-body text-center">
                   <h5 class="card-title fw-bold mb-3"><%= pet.name %></h5>
-                  <%= link_to 'Manage', edit_user_pet_path(current_user, pet), class: "btn btn-primary rounded-pill" %>
+                  <%= link_to 'Manage', edit_pet_path(pet), class: "btn btn-primary rounded-pill" %>
                 </div>
               </div>
             </div>
