@@ -1,5 +1,6 @@
-<%= stylesheet_link_tag 'show', media: 'all', 'data-turbo-track': 'reload' %>
-
+<div data-page-name="<%= page_name %>">
+  <%= stylesheet_link_tag 'show', media: 'all', 'data-turbo-track': 'reload' %>
+<%= render "navbar_dashboard" %>
 <div class="dashboard">
   <div class="cards-container">
     <!-- Pet Profile Card -->
@@ -11,9 +12,8 @@
         <button class="arrow next" onclick="scrollToCard(1)">Next</button>
       </div>
     </div>
-
     <!-- Health Card -->
-    <div class="card health-card">
+    <div class="card health-card" style="background-image: url(<%= asset_path('pethome/health.png') %>); background-position: center; background-repeat: no-repeat; background-size: cover; width: 100%;">
       <%= link_to health_path, class: "card-link" do %>
         <div class="text">Health</div>
       <% end %>
@@ -24,7 +24,7 @@
     </div>
 
     <!-- Nutrition Card -->
-    <div class="card nutrition-card">
+      <div class="card nutrition-card" style="background-image: url(<%= asset_path('pethome/nutrition.png') %>); background-position: center; background-repeat: no-repeat; background-size: cover; width: 100%;">
       <%= link_to nutrition_path, class: "card-link" do %>
         <div class="text">Nutrition</div>
       <% end %>
@@ -35,7 +35,7 @@
     </div>
 
     <!-- Activities Card -->
-    <div class="card activities-card">
+      <div class="card activities-card" style="background-image: url(<%= asset_path('pethome/activities.png') %>); background-position: center; background-repeat: no-repeat; background-size: cover; width: 100%;">
       <%= link_to activities_path, class: "card-link" do %>
         <div class="text">Activities</div>
       <% end %>
@@ -45,6 +45,11 @@
     </div>
   </div>
 </div>
+</div>
+
+
+
+
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
