@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   get 'pages/how', as: 'how'
   get 'dashboard/index', to: 'dashboard#index', as: 'dashboard_index'
 
+  # Pet Routes
+  get 'profile', to: 'pets#profile', as: :profile
+  get 'health', to: 'pets#health', as: :health
+  get 'nutrition', to: 'pets#nutrition', as: :nutrition
+  get 'activities', to: 'pets#activities', as: :activities
+
   # Routes pour les vétérinaires
   resources :vets do
     resources :vet_appointments, shallow: true

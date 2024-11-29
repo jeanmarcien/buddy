@@ -1,77 +1,61 @@
 <%= stylesheet_link_tag 'show', media: 'all', 'data-turbo-track': 'reload' %>
 
-<div data-page-name="<%= page_name %>">
-	<%= render "navbar_dashboard" %>
-	<div class="container">
-		<div class="row">
-			<nav aria-label="breadcrumb">
-			  <ol class="breadcrumb">
-				<li class="breadcrumb-item"><%= link_to 'My Pets', pets_path %></li>
-				<li class="breadcrumb-item active" aria-current="page"><%= @pet.name %></li>
-			  </ol>
-			</nav>
-		</div>
-	</div>
-</div>
-
-
 <div class="dashboard">
-      <div class="cards-container">
-        <div class="card" onclick="openCardDetail('assets/pet-profile.png')">
-          <div class="text">Pet Profile</div>
-        </div>
-        <div class="card" onclick="openCardDetail('assets/health.png')">
-          <div class="text">Health</div>
-        </div>
-        <div class="card" onclick="openCardDetail('assets/nutrition.png')">
-          <div class="text">Nutrition</div>
-        </div>
-        <div class="card" onclick="openCardDetail('assets/activities.png')">
-          <div class="text">Activities</div>
-        </div>
+  <div class="cards-container">
+    <!-- Pet Profile Card -->
+    <div class="card pet-profile-card">
+      <%= link_to profile_path, class: "card-link" do %>
+        <div class="text">Pet Profile</div>
+      <% end %>
+      <div class="arrows">
+        <button class="arrow next" onclick="scrollToCard(1)">Next</button>
       </div>
     </div>
 
-<!-- Card Detail Section (Initially Hidden) -->
-    <div class="card-detail hidden">
-      <div class="background-blur"></div>
-      <header>
-        <h1>Buddy.</h1>
-        <h2>Pet health summary</h2>
-        <p>
-          Your pet vaccines are up-to-date.<br />Your pet still needs 2
-          medications today.
-        </p>
-      </header>
-      <main class="info-sections">
-        <div class="info-box">
-          <h3>Vaccines</h3>
-        </div>
-        <div class="info-box">
-          <h3>Medications</h3>
-        </div>
-        <div class="info-box">
-          <h3>Weight</h3>
-        </div>
-        <div class="info-box">
-          <h3>Allergies</h3>
-        </div>
-      </main>
+    <!-- Health Card -->
+    <div class="card health-card">
+      <%= link_to health_path, class: "card-link" do %>
+        <div class="text">Health</div>
+      <% end %>
+      <div class="arrows">
+        <button class="arrow prev" onclick="scrollToCard(0)">Previous</button>
+        <button class="arrow next" onclick="scrollToCard(2)">Next</button>
+      </div>
     </div>
 
+    <!-- Nutrition Card -->
+    <div class="card nutrition-card">
+      <%= link_to nutrition_path, class: "card-link" do %>
+        <div class="text">Nutrition</div>
+      <% end %>
+      <div class="arrows">
+        <button class="arrow prev" onclick="scrollToCard(1)">Previous</button>
+        <button class="arrow next" onclick="scrollToCard(3)">Next</button>
+      </div>
+    </div>
+
+    <!-- Activities Card -->
+    <div class="card activities-card">
+      <%= link_to activities_path, class: "card-link" do %>
+        <div class="text">Activities</div>
+      <% end %>
+      <div class="arrows">
+        <button class="arrow prev" onclick="scrollToCard(2)">Previous</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-      function openCardDetail(backgroundImage) {
-        // Hide the dashboard
-        console.log("Card clicked! Background image:", backgroundImage);
-        document.querySelector(".dashboard").classList.add("hidden");
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".cards-container");
 
-        // Show the card detail section
-        const cardDetail = document.querySelector(".card-detail");
-        cardDetail.classList.remove("hidden");
-
-        // Set the background image for the card detail
-        document.querySelector(
-          ".background-blur"
-        ).style.backgroundImage = `url(${backgroundImage})`;
-      }
-    </script>
+    window.scrollToCard = (index) => {
+      const cardWidth = 963 + 185;
+      container.scrollTo({
+        left: index * cardWidth,
+        behavior: "smooth",
+      });
+    };
+  });
+</script>

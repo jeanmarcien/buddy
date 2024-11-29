@@ -44,6 +44,7 @@ body {
   align-items: center;
   font-size: 24px;
   font-weight: bold;
+  text-decoration: none;
   color: #333;
   scroll-snap-align: center;
   background-size: cover;
@@ -52,10 +53,8 @@ body {
 }
 
 .card .text {
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  text-decoration: none;
   font-size: 50px;
   font-weight: bold;
   color: #333;
@@ -70,24 +69,60 @@ body {
   scrollbar-width: none;
 }
 
-.card:nth-child(1) {
-  background: gray;
-}
-
-.card:nth-child(2) {
+.health-card {
   background-image: url("/app/assets/images/pethome/health.png");
 }
 
-.card:nth-child(3) {
+.nutrition-card {
   background-image: url("/app/assets/images/pethome/nutrition.png");
 }
 
-.card:nth-child(4) {
+.activities-card {
   background-image: url("/app/assets/images/pethome/activities.png");
 }
 
-/* inside the card */
+/* arrows */
+.arrows {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
 
+.arrows {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 20px;
+  width: 90%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.arrow {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.arrow:hover {
+  background-color: #555;
+}
+
+.arrow:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+/* inside the card */
 .hidden {
   display: none;
 }
@@ -100,11 +135,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-image: url("assets/health.png");
+  background-image: url("/app/assets/images/pethome/health.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 5px solid #000;
+  padding-bottom: 100px;
 }
 
 .background-blur {
@@ -128,20 +163,20 @@ header {
 header h1 {
   font-size: 36px;
   margin: 0;
-  color: yellow;
+  color: black;
 }
 
 header h2 {
   font-size: 24px;
   margin: 10px 0 5px;
-  color: red;
+  color: black;
 }
 
 header p {
   font-size: 16px;
   margin: 0;
   line-height: 1.5;
-  color: blue;
+  color: black;
 }
 
 .info-sections {
@@ -169,7 +204,7 @@ header p {
 
 .info-box h3 {
   position: absolute;
-  top: -60px; /* Position the title just above the box */
+  top: -60px;
   font-size: 18px;
   color: black;
   text-align: center;
