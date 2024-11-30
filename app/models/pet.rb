@@ -14,8 +14,8 @@ class Pet < ApplicationRecord
   belongs_to :user
   belongs_to :vet, optional: true
 
-  # has_many :vaccinations
-  # has_many :treatments
+  has_many :treatments # décommenté
+  has_many :measurements # ajouté
   # has_many :physical_records
   # has_many :nutritions
   # has_many :activities
