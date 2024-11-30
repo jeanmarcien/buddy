@@ -1,22 +1,78 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'faker'
 
-Vet.create!([
-  { first_name: 'Emma', last_name: 'Smith', email: 'emma.smith@example.com', phone: '555-123-4567' },
-  { first_name: 'Liam', last_name: 'Johnson', email: 'liam.johnson@example.com', phone: '555-234-5678' },
-  { first_name: 'Olivia', last_name: 'Brown', email: 'olivia.brown@example.com', phone: '555-345-6789' },
-  { first_name: 'Noah', last_name: 'Williams', email: 'noah.williams@example.com', phone: '555-456-7890' },
-  { first_name: 'Ava', last_name: 'Jones', email: 'ava.jones@example.com', phone: '555-567-8901' },
-  { first_name: 'Elijah', last_name: 'Garcia', email: 'elijah.garcia@example.com', phone: '555-678-9012' },
-  { first_name: 'Sophia', last_name: 'Miller', email: 'sophia.miller@example.com', phone: '555-789-0123' },
-  { first_name: 'James', last_name: 'Martinez', email: 'james.martinez@example.com', phone: '555-890-1234' },
-  { first_name: 'Isabella', last_name: 'Davis', email: 'isabella.davis@example.com', phone: '555-901-2345' },
-  { first_name: 'Benjamin', last_name: 'Hernandez', email: 'benjamin.hernandez@example.com', phone: '555-012-3456' }
-])
+# Nettoyage des tables dans l'ordre pour respecter les contraintes de clés étrangères
+puts "Cleaning database..."
+puts "Cleaning measurements..."
+Measurement.destroy_all if Measurement.table_exists?
+puts "Cleaning treatments..."
+Treatment.destroy_all if Treatment.table_exists?
+puts "Cleaning pets..."
+Pet.destroy_all if Pet.table_exists?
+puts "Cleaning users..."
+User.destroy_all if User.table_exists?
+
+puts "Creating users..."
+
+# Création de 5 users
+5.times do
+  user = User.create!(
+    email: Faker::Internet.unique.email,
+    password: "password123",
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    address: Faker::Address.full_address
+  )
+  
+  # Création de 3 pets pour chaque user
+  3.times do
+    pet = Pet.create!(
+      name: Faker::Creature::Dog.name,
+      specie: Pet::SPECIES.sample,
+      breed: Faker::Creature::Dog.breed,
+      birth_day: Faker::Date.between(from: 5.years.ago, to: 6.months.ago),
+      gender: Pet::GENDERS.sample,
+      user: user
+    )
+    
+    # Création de 2-4 treatments pour chaque pet
+    rand(2..4).times do
+      start_date = Faker::Date.between(from: 1.year.ago, to: Date.today)
+      Treatment.create!(
+        pet: pet,
+        treatment_type: Treatment.treatment_types.keys.sample,
+        start_date: start_date,
+        end_date: start_date + rand(7..30).days,
+        dosage: "#{rand(1..3)} #{['pills', 'ml', 'mg'].sample}",
+        frequency: ["Once daily", "Twice daily", "Every 8 hours", "Weekly"].sample,
+        notes: Faker::Lorem.sentence,
+        renew_date: start_date + rand(30..90).days,
+        name: Faker::Science.science
+      )
+    end
+    
+    # Création de 3-6 measurements pour chaque pet
+    rand(3..6).times do
+      measurement_type = Measurement.measurement_types.keys.sample
+      value = case measurement_type
+              when 'weight'
+                rand(2.0..50.0).round(1) # poids en kg
+              when 'height'
+                rand(20.0..100.0).round(1) # taille en cm
+              end
+              
+      Measurement.create!(
+        pet: pet,
+        measurement_type: measurement_type,
+        value: value,
+        date: Faker::Date.between(from: 6.months.ago, to: Date.today),
+        notes: Faker::Lorem.sentence
+      )
+    end
+  end
+end
+
+puts "Seeds completed! Created:"
+puts "- #{User.count} users"
+puts "- #{Pet.count} pets"
+puts "- #{Treatment.count} treatments"
+puts "- #{Measurement.count} measurements"
