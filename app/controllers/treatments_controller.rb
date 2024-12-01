@@ -1,4 +1,7 @@
 class TreatmentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_pet
+  
   def index
   end
 
@@ -15,5 +18,11 @@ class TreatmentsController < ApplicationController
   end
 
   def destroy
+  end
+  
+  private
+  
+  def set_pet
+    @pet = Pet.find(params[:pet_id])
   end
 end
