@@ -1,2 +1,65 @@
-<h1>Measurements#index</h1>
-<p>Find me in app/views/measurements/index.html.erb</p>
+<div data-page-name="<%= page_name %>">
+	<%= render "pets/navbar_dashboard" %>
+	  <div class="container-fluid text-primary py-0">
+		<div class="container py-5">
+		  <div class="row">
+			<div class="col-12 text-center mb-4">
+			  <h1 class="display-4 display-md-5 fw-bold">Measurements for <%= @pet.name %></h1>
+			</div>
+		  </div>
+	
+		  <div class="row">
+			<div class="col-12">
+			  <% if @measurements.any? %>
+				<div class="table-responsive">
+				  <table class="table table-hover">
+					<thead>
+					  <tr>
+						<th scope="col">Date</th>
+						<th scope="col">Type</th>
+						<th scope="col">Value</th>
+						<th scope="col">Notes</th>
+						<th scope="col">Actions</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <% @measurements.each do |measurement| %>
+						<tr>
+						  <td><%= measurement.date.strftime("%B %d, %Y") %></td>
+						  <td class="text-capitalize"><%= measurement.measurement_type %></td>
+						  <td>
+							<%= measurement.value %>
+							<%= measurement.weight? ? 'kg' : 'cm' %>
+						  </td>
+						  <td><%= measurement.notes %></td>
+						  <td>
+							<%= link_to edit_pet_measurement_path(@pet, measurement), class: "btn btn-sm btn-outline-primary me-2" do %>
+							  <i class="fa-regular fa-pen-to-square"></i>
+							<% end %>
+							<%= link_to pet_measurement_path(@pet, measurement), 
+								data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+								class: "btn btn-sm btn-outline-danger" do %>
+							  <i class="fa-regular fa-trash-can"></i>
+							<% end %>
+						  </td>
+						</tr>
+					  <% end %>
+					</tbody>
+				  </table>
+				</div>
+			  <% else %>
+				<div class="text-center py-5">
+				  <p class="mb-4">No measurements recorded yet.</p>
+				</div>
+			  <% end %>
+			  
+			  <div class="text-center mt-4">
+				<%= link_to new_pet_measurement_path(@pet), class: "btn btn-primary rounded-pill" do %>
+				  <i class="fa-solid fa-plus me-2"></i>Add New Measurement
+				<% end %>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+</div>
