@@ -11,7 +11,10 @@
 					  <p>Date de naissance : <%= @pet.birth_day %></p>
 					  <p>Genre : <%= @pet.gender %></p>
 					  <p>Ajouté le : <%= @pet.created_at.strftime("%d/%m/%Y") %></p>
-					  <p><%= link_to "Voir les mesures", pet_measurements_path(@pet) %></p>
+					  <div>
+						  <%= link_to "Voir les mesures", pet_measurements_path(@pet) %>
+						  <%= link_to "Voir les traitements", pet_treatments_path(@pet) %>
+					  </div>
 					  <div>
 						<%= link_to "Modifier", edit_pet_path(@pet) %>
 						<%= link_to "Retour au dashboard", pets_path %>

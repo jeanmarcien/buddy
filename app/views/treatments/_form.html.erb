@@ -1,0 +1,127 @@
+<div data-page-name="new_treatment">
+<%= render "pets/navbar_dashboard" %>
+  <div class="container-fluid text-primary py-0">
+	<div class="container py-5">
+	  <div class="row">
+		<div class="col-12 col-lg-8 mx-auto text-center">
+		  <h1 class="display-4 display-md-5 fw-bold mb-4"><%= @treatment.new_record? ? "Add a new treatment" : "Update treatment" %> for <%= @pet.name %></h1>
+		</div>
+	  </div>
+	  <div class="row">
+		<div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
+		  <%= simple_form_for [@pet, @treatment], html: { class: 'form-horizontal' } do |form| %>
+			<div class="mb-4 text-center">
+			  <%= form.input :name,
+				  label: "<strong>Treatment Name</strong>".html_safe,
+				  required: true,
+				  input_html: { class: "form-control text-center bg-white" } %>
+			</div>
+
+			<div class="mb-4 text-center">
+			  <%= form.input :treatment_type, 
+				  collection: Treatment.treatment_types.keys, 
+				  label: "<strong>Type of Treatment</strong>".html_safe,
+				  prompt: "Select a treatment type",
+				  required: true,
+				  input_html: { class: "form-control text-center bg-white" } %>
+			</div>
+
+			<div class="mb-4 text-center">
+			  <label class="form-label">
+				<strong>Start Date</strong>
+			  </label>
+			  <div class="input-group">
+				<%= form.input :start_date,
+					label: false,
+					as: :string,
+					required: true,
+					wrapper: false,
+					input_html: { 
+					  data: { controller: "treatment-datepicker" },
+					  class: "form-control text-center bg-white"
+					} %>
+				<span class="input-group-text">
+				  <i class="fa-regular fa-calendar"></i>
+				</span>
+			  </div>
+			</div>
+
+			<div class="mb-4 text-center">
+			  <label class="form-label">
+				<strong>End Date</strong>
+			  </label>
+			  <div class="input-group">
+				<%= form.input :end_date,
+					label: false,
+					as: :string,
+					wrapper: false,
+					input_html: { 
+					  data: { controller: "treatment-datepicker" },
+					  class: "form-control text-center bg-white"
+					} %>
+				<span class="input-group-text">
+				  <i class="fa-regular fa-calendar"></i>
+				</span>
+			  </div>
+			</div>
+
+			<div class="mb-4 text-center">
+			  <%= form.input :dosage,
+				  label: "<strong>Dosage</strong>".html_safe,
+				  required: true,
+				  placeholder: "Ex: 2 pills",
+				  input_html: { class: "form-control text-center bg-white" } %>
+			</div>
+
+			<div class="mb-4 text-center">
+			  <%= form.input :frequency,
+				  label: "<strong>Frequency</strong>".html_safe,
+				  required: true,
+				  placeholder: "Ex: Once daily",
+				  input_html: { class: "form-control text-center bg-white" } %>
+			</div>
+
+			<div class="mb-4 text-center">
+			  <label class="form-label">
+				<strong>Renew Date</strong>
+			  </label>
+			  <div class="input-group">
+				<%= form.input :renew_date,
+					label: false,
+					as: :string,
+					wrapper: false,
+					input_html: { 
+					  data: { controller: "treatment-datepicker" },
+					  class: "form-control text-center bg-white"
+					} %>
+				<span class="input-group-text">
+				  <i class="fa-regular fa-calendar"></i>
+				</span>
+			  </div>
+			</div>
+
+			<div class="mb-4 text-center">
+			  <%= form.input :notes,
+				  label: "<strong>Notes</strong>".html_safe,
+				  required: false,
+				  input_html: { 
+					class: "form-control text-center bg-white",
+					rows: 3
+				  } %>
+			</div>
+
+			<div class="d-flex justify-content-between">
+			  <div class="text-center">
+				<%= link_to 'Cancel', pet_treatments_path(@pet), class: "btn btn-secondary rounded-pill" %>
+			  </div>
+			  
+			  <div class="text-center">
+				<%= form.button :submit, form.object.new_record? ? "Add Treatment" : "Update Treatment", class: "btn btn-primary rounded-pill" %>
+			  </div>
+			</div>
+		  <% end %>
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
