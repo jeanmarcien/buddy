@@ -6,7 +6,11 @@
       <div class="row">
         <div class="col-12 col-lg-8 mx-auto text-center">
           <h1 class="display-4 display-md-5 fw-bold mb-4">Hi, <%= current_user.first_name %>!</h1>
-          <h2 class="fw-bold mb-4">Who would you like to manage today?</h2>
+          <% if @pets.present? %>
+            <h2 class="fw-bold mb-4">Who would you like to manage today?</h2>
+          <% else %>
+            <h2>Add a pet to get started</h2>
+          <% end %>
         </div>
       </div>
 
@@ -36,3 +40,5 @@
     </div>
   </div>
 </div>
+
+

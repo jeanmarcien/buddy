@@ -1,13 +1,14 @@
-<!-- filepath: /root/code/fannyevepl/buddy/app/views/dashboard/index.html.erb -->
-
-
 <div class="logo-container" style="margin: 20px;">
   <%= image_tag 'buddy.png', class: 'img-fluid logo' %>
 </div>
 
 <div class="text-center mt-5 text-heavy">
   <h1>Hi, <%= current_user.first_name %>!</h1>
-  <h1>Who would you like to manage today?</h1>
+  <% if @pets.present? %>
+    <h1>Who would you like to manage today?</h1>
+  <% else %>
+    <h1>Add a pet to get started</h1>
+  <% end %>
 </div>
 
 <div class="d-flex flex-column justify-content-center align-items-center mt-5">
