@@ -5,22 +5,18 @@ class Pet < ApplicationRecord
     "Rabbit",
     "Other"
   ]
-
   GENDERS = [
     "Male",
     "Female"
   ]
-
   belongs_to :user
   belongs_to :vet, optional: true
-
-  has_many :treatments # décommenté
-  has_many :measurements # ajouté
+  has_many :treatments, dependent: :destroy
+  has_many :measurements, dependent: :destroy
   # has_many :physical_records
   # has_many :nutritions
   # has_many :activities
   has_many :vet_appointments
-
   validates :name, presence: true
   validates :specie, presence: true, inclusion: { in: SPECIES }
   validates :breed, presence: true
