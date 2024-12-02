@@ -62,10 +62,20 @@
 				@pet.new_record? ? pets_path : pet_path(@pet), 
 				class: "btn btn-secondary rounded-pill" %>
 			  </div>
-			  
-			   <div class="text-center">
-				 <%= form.button :submit, form.object.new_record? ? "Add" : "Update", class: "btn btn-primary rounded-pill" %>
-			   </div>
+			  <div class="text-center">
+				  <% if @pet.new_record? %>
+					<%= form.button :submit, "Add", class: "btn btn-primary rounded-pill" %>
+				  <% else %>
+					<%= link_to "Remove", pet_path(@pet), 
+						class: "btn btn-danger rounded-pill mx-2", 
+						data: { 
+						  turbo_method: :delete, 
+						  turbo_confirm: "Are you sure to remove #{@pet.name} ?" 
+						} %>
+					<%= form.button :submit, "Update", class: "btn btn-primary rounded-pill" %>
+				  <% end %>
+			  </div>
+
 		   </div>
 		   
 		  <% end %>
