@@ -12,3 +12,6 @@ body {
 .flash-message.fade-out {
   opacity: 0;
 }
+.chart {
+  margin-bottom: clamp(2rem, calc(2rem + 1vw), 4rem);
+}
