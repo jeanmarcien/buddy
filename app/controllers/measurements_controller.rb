@@ -5,6 +5,24 @@ class MeasurementsController < ApplicationController
   
   def index
     @measurements = @pet.measurements.order(date: :desc)
+    
+    @height_data = {
+      labels: @measurements.where(measurement_type: :height).map { |m| m.date.strftime('%Y-%m-%d') },
+      datasets: [{
+        label: 'Height (cm)',
+        data: @measurements.where(measurement_type: :height).map(&:value)
+      }]
+    }
+    
+    @weight_data = {
+      labels: @measurements.where(measurement_type: :weight).map { |m| m.date.strftime('%Y-%m-%d') },
+      datasets: [{
+        label: 'Weight (kg)',
+        data: @measurements.where(measurement_type: :weight).map(&:value),
+        borderColor: 'rgb(255, 99, 132)',
+        tension: 0.1
+      }]
+    }
   end
 
   def new

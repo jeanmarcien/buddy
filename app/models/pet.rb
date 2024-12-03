@@ -19,7 +19,6 @@ class Pet < ApplicationRecord
   has_many :vet_appointments
   validates :name, presence: true
   validates :specie, presence: true, inclusion: { in: SPECIES }
-  validates :breed
   validates :birth_day, presence: true
   validates :gender, presence: true, inclusion: { in: GENDERS }
 end

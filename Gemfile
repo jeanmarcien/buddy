@@ -53,6 +53,7 @@ gem "sassc-rails"
 gem "ostruct"
 gem 'inline_svg'
 gem 'faker'
+gem 'chart-js-rails'
 
 group :development, :test do
   gem "dotenv-rails"
