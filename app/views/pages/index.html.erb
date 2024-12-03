@@ -1,7 +1,7 @@
 <div data-page-name="<%= page_name %>">
 	<%= render "navbar" %>
 	<div class="container-fluid text-primary py-5">
-		<div class="container py-5">
+		<div class="home container py-5">
 			<div class="row">
 				<div class="col-12 col-lg-8 mx-auto text-center">
 					<h1 class="display-1 display-md-2 fw-bold mb-4">Simplifying life for you and your pet</h1>
@@ -15,6 +15,12 @@
 						<%= link_to 'How does it work?', how_path, class:"btn btn-primary rounded-pill btn-lg px-4 flex-fill" %>
 					</div>
 				</div>
+			</div>
+			<div class='illustration-dog d-none d-lg-block'>
+				<%= inline_svg_tag "dog.svg", class: "step-icon" %>
+			</div>
+			<div class='illustration-cat d-none d-lg-block'>
+				<%= inline_svg_tag "cat.svg", class: "step-icon" %>
 			</div>
 		</div>
 	</div>
