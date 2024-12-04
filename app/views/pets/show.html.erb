@@ -22,7 +22,15 @@
 		   <div class="card-body text-center">
 			 <h1 class="display-4 mb-4">Hi, I'm <%= @pet.name %></h1>
 			 <% if @pet.photo.present? %>
-			   <%= cl_image_tag(@pet.photo.key, height: 260, crop: :fill, class: "rounded") %>
+
+			   <%= cl_image_tag @pet.photo.key, 
+				   width: 300, 
+				   height: 300, 
+				   crop: :fill, 
+				   radius: :max,
+				   gravity: :face, # optionnel : centre sur le visage si c'est une photo de profil
+				   class: "rounded"
+			   %>
 			 <% else %>
 			   <%= image_tag(image_file, height: 260, class: "rounded") %>
 			 <% end %>
