@@ -18,14 +18,18 @@
         <div class="d-flex flex-row justify-content-center align-items-center mb-4">
           <% @pets.each do |pet| %>
             <div class="d-flex flex-column justify-content-center align-items-center mx-2">
-              <%= link_to pet_path(pet) do %>
-                <% image_file = case pet.specie
+                <%= link_to pet_path(pet) do %>
+                <% if pet.photo.attached? %>
+                  <%= cl_image_tag pet.photo.key, class: 'avatar', crop: 'fill', quality: 'auto' %>
+                <% else %>
+                  <% image_file = case pet.specie
                    when "Cat" then 'avatar/Cat.png'
                    when "Dog" then 'avatar/Dog.png'
                    when "Rabbit" then 'avatar/Rabbit.png'
                    else 'avatar/Default.png'
                    end %>
-                <%= image_tag image_file, class: 'avatar' %>
+                  <%= image_tag image_file, class: 'avatar' %>
+                <% end %>
               <% end %>
               <h6 class="card-title text-center text-dark mt-2"><%= pet.name %></h6>
             </div>
@@ -40,5 +44,3 @@
     </div>
   </div>
 </div>
-
-
