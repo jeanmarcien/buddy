@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_30_203705) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_04_010748) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hygienes", force: :cascade do |t|
+    t.string "hygiene_type"
+    t.date "date"
+    t.integer "frequency"
+    t.text "note"
+    t.bigint "pet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_hygienes_on_pet_id"
+  end
 
   create_table "measurements", force: :cascade do |t|
     t.integer "measurement_type", null: false
@@ -93,6 +104,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_30_203705) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "hygienes", "pets"
   add_foreign_key "measurements", "pets"
   add_foreign_key "pets", "users"
   add_foreign_key "pets", "vets"
