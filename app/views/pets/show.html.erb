@@ -1,6 +1,11 @@
 <div data-page-name="<%= page_name %>">
 	<%= render "navbar_dashboard" %>
 	<div class="container py-5">
+		<div class="mb-4">
+			<%= link_to pets_path, class: "btn btn-outline-secondary rounded-pill" do %>
+				 Back to Dashboard
+			<% end %>
+		</div>
 	 <!-- En-tête avec info principale du pet -->
 	 <div class="row mb-5">
 	   <div class="col-12">
@@ -16,6 +21,9 @@
 				<%= link_to pets_path, class: "btn btn-outline-secondary rounded-pill" do %>
 					 Back to Dashboard
 				<% end %>
+         <%= link_to calendar_pet_path(@pet), class: "btn btn-outline-danger rounded-pill" do %>
+					Reminders calendar</i>
+				  <% end %>
 			 </div>
        <div class="card-body text-center">
         <h1 class="display-4 mb-4 text-white" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Hi, I'm <%= @pet.name %></h1>
@@ -113,6 +121,7 @@
 		   <div class="card-body">
 			 <div class="d-flex justify-content-between align-items-center mb-4">
 			   <h5 class="card-title mb-0">Active Treatments</h5>
+
 			   <%= link_to pet_treatments_path(@pet), class: "btn btn-sm btn-outline-primary rounded-pill" do %>
 				 View All <i class="fa-solid fa-arrow-right ms-1"></i>
 			   <% end %>

@@ -1,7 +1,8 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_pet, only: [:show, :edit, :update, :destroy]
-  before_action :verify_pet_owner, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_pet, only: [:show, :edit, :update, :destroy, :calendar]
+  before_action :verify_pet_owner, only: [:show, :edit, :update, :destroy, :calendar]
 
   def index
     @pets = current_user.pets.order(:name)
@@ -42,6 +43,9 @@ class PetsController < ApplicationController
   def destroy
     @pet.destroy
     redirect_to pets_path, notice: 'Pet successfully deleted.'
+  end
+  
+  def calendar
   end
 
   private
