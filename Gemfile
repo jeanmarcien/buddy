@@ -54,6 +54,7 @@ gem "ostruct"
 gem 'inline_svg'
 gem 'faker'
 gem 'chart-js-rails'
+gem "cloudinary"
 
 group :development, :test do
   gem "dotenv-rails"

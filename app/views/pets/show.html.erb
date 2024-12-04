@@ -4,14 +4,21 @@
 	 <!-- En-tête avec info principale du pet -->
 	 <div class="row mb-5">
 	   <div class="col-12">
-		 <div class="card shadow-sm">
+        <% image_file = case @pet.specie
+                  when "Cat" then 'avatar/Cat.png'
+                  when "Dog" then 'avatar/Dog.png'
+                  when "Rabbit" then 'avatar/Rabbit.png'
+                  else 'avatar/Default.png'
+                  end %>
+        <% image_path = @pet.photo.present? ? cl_image_path(@pet.photo.key, height: 300, crop: :fill) : asset_path(image_file) %>
+     <div class="card shadow-sm" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path %>')">
 			 <div class="mx-4 my-4 d-flex justify-content-between">
 				<%= link_to pets_path, class: "btn btn-outline-secondary rounded-pill" do %>
 					 Back to Dashboard
 				<% end %>
-			    </div>
-		   <div class="card-body text-center">
-			 <h1 class="display-4 mb-4"><%= @pet.name %></h1>
+			 </div>
+       <div class="card-body text-center">
+        <h1 class="display-4 mb-4 text-white" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Hi, I'm <%= @pet.name %></h1>
 		   </div>
 		 </div>
 	   </div>
