@@ -3,6 +3,10 @@ class HygienesController < ApplicationController
   before_action :set_pet
   before_action :set_hygiene, only: [:edit, :update, :destroy]
 
+  def index
+    @hygienes = @pet.hygienes
+  end
+
   def new
     @hygiene = @pet.hygienes.new
   end

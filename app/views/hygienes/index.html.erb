@@ -12,45 +12,25 @@
       <div class="row">
         <div class="col-12">
           <% if @hygienes.any? %>
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">Type</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Frequency</th>
-                    <th scope="col">Note</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @hygienes.each do |hygiene| %>
-                    <tr>
-                      <td class="text-capitalize"><%= hygiene.hygiene_type %></td>
-                      <td><%= hygiene.date.strftime("%d/%m/%Y") %></td>
-                      <td><%= hygiene.frequency %></td>
-                      <td><%= hygiene.note %></td>
-                      <td>
-                        <%= link_to edit_pet_hygiene_path(@pet, hygiene), class: "btn btn-sm btn-outline-primary me-2" do %>
-                          <i class="fa-regular fa-pen-to-square"></i>
-                        <% end %>
-                        <%= link_to pet_hygiene_path(@pet, hygiene), 
-                            data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this hygiene record?" },
-                            class: "btn btn-sm btn-outline-danger" do %>
-                          <i class="fa-regular fa-trash-can"></i>
-                        <% end %>
-                      </td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
+            <div class="list-group">
+              <% @hygienes.each do |hygiene| %>
+                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center w-100 h6" href="<%= edit_pet_hygiene_path(@pet, hygiene) %>">
+                  <div class="d-flex align-items-center">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" class="d-block mr-3 icon">
+                      <image xlink:href="<%= asset_path("icons/#{hygiene.hygiene_type}.svg") %>" src="yourfallback.png" width="50" height="50"></image>
+                    </svg>
+                    <span class="mb-0 h6 text-capitalize"><%= hygiene.hygiene_type %></span>
+                  </div>
+                  <i class="material-icons d-block">keyboard_arrow_right</i>
+                </a>
+              <% end %>
             </div>
           <% else %>
             <div class="text-center py-5">
               <p class="mb-4">No hygiene records yet.</p>
             </div>
           <% end %>
-          <div class="d-flex justify-content-center gap-4">
+          <div class="d-flex justify-content-center gap-4 mt-4">
             <div class="text-center">
               <%= link_to 'Cancel', pet_path(@pet), class: "btn btn-secondary rounded-pill" %>
             </div>

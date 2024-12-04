@@ -11,6 +11,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @recent_measurements = @pet.measurements.order(date: :desc).limit(3)
     @active_treatments = @pet.treatments.where("end_date >= ?", Date.today).order(end_date: :asc).limit(3)
+    @hygiene_records = @pet.hygienes.order(date: :desc).limit(3)
   end
 
   def new
@@ -20,7 +21,6 @@ class PetsController < ApplicationController
   def create
     @pet = current_user.pets.build(pet_params)
     if @pet.save
-      # redirect_to @pets, notice: 'Pet successfully added.'
       redirect_to pets_path, notice: 'Pet successfully added.'
     else
       render :new, status: :unprocessable_entity

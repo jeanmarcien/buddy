@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   resources :pets do
     resources :treatments
     resources :measurements
+    resources :hygienes # Ajout des routes pour les hygienes
   end
-
 
   # Route pour les erreurs 404
   match '/404', to: 'errors#not_found', via: :all
