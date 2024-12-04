@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   # Routes imbriquées pour les pets et leurs données associées
   resources :pets do
+    get 'calendar', on: :member  
     resources :treatments
     resources :measurements
   end
