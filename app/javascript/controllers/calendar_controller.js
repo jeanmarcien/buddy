@@ -6,21 +6,41 @@ export default class extends Controller {
     document.addEventListener("DOMContentLoaded", () => {
       const calendarEl = this.element;
       const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: "dayGridMonth",
+        initialView: window.innerWidth < 768 ? "timeGridDay" : "dayGridMonth",
         headerToolbar: {
           left: "prev,next today",
           center: "title",
-          right: "dayGridMonth,timeGridWeek,listWeek",
+          right: "dayGridMonth,timeGridWeek,timeGridDay",
         },
         selectable: true,
         editable: true,
         firstDay: 1,
         locale: "fr",
-        buttonText: {
-          today: "Aujourd'hui",
-          month: "Mois",
-          week: "Semaine",
-          list: "Liste",
+        height: "auto",
+        contentHeight: "auto",
+        handleWindowResize: true,
+        windowResizeDelay: 200,
+        // Configuration responsive
+        windowResize: function (view) {
+          if (window.innerWidth < 768) {
+            calendar.changeView("timeGridDay");
+          } else {
+            calendar.changeView("dayGridMonth");
+          }
+        },
+        // Personnalisation des en-têtes selon la taille
+        views: {
+          dayGridMonth: {
+            titleFormat: { year: "numeric", month: "long" },
+          },
+          timeGridWeek: {
+            titleFormat: { year: "numeric", month: "long", day: "2-digit" },
+            dayHeaderFormat: { weekday: "short", day: "2-digit" },
+          },
+          timeGridDay: {
+            titleFormat: { year: "numeric", month: "long", day: "2-digit" },
+            dayHeaderFormat: { weekday: "long", day: "2-digit" },
+          },
         },
       });
 
