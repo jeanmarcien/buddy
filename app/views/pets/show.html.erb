@@ -16,7 +16,7 @@
 		 </div>
 	   </div>
 	 </div>
-	
+
 	 <!-- Section Mesures et Traitements -->
 	 <div class="row g-4">
 	   <!-- Card Informations -->
@@ -61,7 +61,7 @@
 		   </div>
 		 </div>
 	   </div>
-	
+
 	   <!-- Card Dernières Mesures -->
 	   <div class="col-md-4">
 		 <div class="card h-100 shadow-sm">
@@ -72,7 +72,7 @@
 				 View All <i class="fa-solid fa-arrow-right ms-1"></i>
 			   <% end %>
 			 </div>
-			 
+
 			 <% if @recent_measurements.any? %>
 			   <div class="list-group list-group-flush">
 				 <% @recent_measurements.each do |measurement| %>
@@ -92,14 +92,14 @@
 			 <% else %>
 			   <p class="text-muted text-center my-4">No measurements yet</p>
 			 <% end %>
-			 
+
 			 <%= link_to new_pet_measurement_path(@pet), class: "btn btn-primary rounded-pill w-100 mt-3" do %>
 			   <i class="fa-solid fa-plus me-1"></i> Add Measurement
 			 <% end %>
 		   </div>
 		 </div>
 	   </div>
-	
+
 	   <!-- Card Traitements en cours -->
 	   <div class="col-md-4">
 		 <div class="card h-100 shadow-sm">
@@ -110,7 +110,7 @@
 				 View All <i class="fa-solid fa-arrow-right ms-1"></i>
 			   <% end %>
 			 </div>
-	
+
 			 <% if @active_treatments.any? %>
 			   <div class="list-group list-group-flush">
 				 <% @active_treatments.each do |treatment| %>
@@ -129,7 +129,7 @@
 			 <% else %>
 			   <p class="text-muted text-center my-4">No active treatments</p>
 			 <% end %>
-	
+
 			 <%= link_to new_pet_treatment_path(@pet), class: "btn btn-primary rounded-pill w-100 mt-3" do %>
 			   <i class="fa-solid fa-plus me-1"></i> Add Treatment
 			 <% end %>
@@ -139,7 +139,3 @@
 	 </div>
 	</div>
 </div>
-
-
-
-
