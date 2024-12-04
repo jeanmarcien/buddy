@@ -132,3 +132,17 @@
   background-color: #84a59d; /* $teal */
   border-color: #84a59d;
 }
+
+/* Dans votre fichier CSS */
+.treatment-renewal-event {
+  background-color: #f4a258 !important;
+  border-color: #f4a258 !important;
+  color: white !important;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+/* Style pour le hover */
+.treatment-renewal-event:hover {
+  background-color: #84a59d !important;
+}

@@ -21,7 +21,10 @@ Rails.application.routes.draw do
     resources :treatments
     resources :measurements
   end
-
+  
+  resources :calendars, only: [:index]
+  get 'calendar_events', to: 'calendars#events'
+  get 'pets/:pet_id/treatments/:id/details', to: 'treatments#details' 
 
   # Route pour les erreurs 404
   match '/404', to: 'errors#not_found', via: :all
