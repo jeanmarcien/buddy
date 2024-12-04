@@ -20,7 +20,7 @@
 				   end %>
 		 <div class="card shadow-sm">
 		   <div class="card-body text-center">
-			 <h1 class="display-4 mb-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Hi, I'm <%= @pet.name %></h1>
+			 <h1 class="display-4 mb-4">Hi, I'm <%= @pet.name %></h1>
 			 <% if @pet.photo.present? %>
 			   <%= cl_image_tag(@pet.photo.key, height: 260, crop: :fill, class: "rounded") %>
 			 <% else %>
