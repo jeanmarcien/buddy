@@ -1,0 +1,32 @@
+<div data-page-name="<%= page_name %>">
+  <%= render "navbar_dashboard" %>
+  <!-- calendrier -->
+  <div class="container">
+	  <%= link_to 'Back', pet_path(@pet), class: "btn btn-secondary rounded-pill" %>
+  </div>
+  <div class="container py-3">
+	<div class="row justify-content-center">
+	  <div class="col-12">
+		<div data-controller="calendar" class="calendar-container">
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="treatmentModal" tabindex="-1" aria-labelledby="treatmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h5 class="modal-title" id="treatmentModalLabel">Treatment Details</h5>
+		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	  </div>
+	  <div class="modal-body" id="treatmentModalBody">
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+	  </div>
+	</div>
+  </div>
+</div>

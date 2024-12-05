@@ -18,6 +18,7 @@ class Pet < ApplicationRecord
   # has_many :nutritions
   # has_many :activities
   has_many :vet_appointments
+  has_one_attached :photo
   validates :name, presence: true
   validates :specie, presence: true, inclusion: { in: SPECIES }
   validates :birth_day, presence: true

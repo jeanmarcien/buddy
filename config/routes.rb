@@ -18,10 +18,12 @@ Rails.application.routes.draw do
 
   # Routes imbriquées pour les pets et leurs données associées
   resources :pets do
+    get 'calendar', on: :member  
     resources :treatments
     resources :measurements
     resources :hygienes # Ajout des routes pour les hygienes
   end
+
 
   # Route pour les erreurs 404
   match '/404', to: 'errors#not_found', via: :all

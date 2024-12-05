@@ -1,22 +1,44 @@
 <div data-page-name="<%= page_name %>">
 	<%= render "navbar_dashboard" %>
 	<div class="container py-5">
+		<div class="my-4 d-flex justify-content-between">
+			<%= link_to pets_path, class: "btn btn-outline-secondary rounded-pill" do %>
+				 Back to Dashboard
+			<% end %>
+			<%= link_to calendar_pet_path(@pet), class: "btn btn-outline-danger rounded-pill" do %>
+				Reminders calendar</i>
+			  <% end %>
+		</div>
 	 <!-- En-tête avec info principale du pet -->
 	 <div class="row mb-5">
 	   <div class="col-12">
+		 <% image_file = case @pet.specie
+				   when "Cat" then 'avatar/Cat.png'
+				   when "Dog" then 'avatar/Dog.png'
+				   when "Rabbit" then 'avatar/Rabbit.png'
+				   else 'avatar/Default.png'
+				   end %>
 		 <div class="card shadow-sm">
-			 <div class="mx-4 my-4 d-flex justify-content-between">
-				<%= link_to pets_path, class: "btn btn-outline-secondary rounded-pill" do %>
-					 Back to Dashboard
-				<% end %>
-			    </div>
 		   <div class="card-body text-center">
-			 <h1 class="display-4 mb-4"><%= @pet.name %></h1>
+			 <h1 class="display-4 mb-4">Hi, I'm <%= @pet.name %></h1>
+			 <% if @pet.photo.present? %>
+
+			   <%= cl_image_tag @pet.photo.key, 
+				   width: 280, 
+				   height: 280, 
+				   crop: :fill, 
+				   radius: :max,
+				   gravity: :face, # optionnel : centre sur le visage si c'est une photo de profil
+				   class: "rounded"
+			   %>
+			 <% else %>
+			   <%= image_tag(image_file, height: 260, class: "rounded") %>
+			 <% end %>
 		   </div>
 		 </div>
 	   </div>
 	 </div>
-	
+
 	 <!-- Section Mesures et Traitements -->
 	 <div class="row g-4">
 	   <!-- Card Informations -->
@@ -61,7 +83,7 @@
 		   </div>
 		 </div>
 	   </div>
-	
+
 	   <!-- Card Dernières Mesures -->
 	   <div class="col-md-4">
 		 <div class="card h-100 shadow-sm">
@@ -72,7 +94,7 @@
 				 View All <i class="fa-solid fa-arrow-right ms-1"></i>
 			   <% end %>
 			 </div>
-			 
+
 			 <% if @recent_measurements.any? %>
 			   <div class="list-group list-group-flush">
 				 <% @recent_measurements.each do |measurement| %>
@@ -92,25 +114,26 @@
 			 <% else %>
 			   <p class="text-muted text-center my-4">No measurements yet</p>
 			 <% end %>
-			 
+
 			 <%= link_to new_pet_measurement_path(@pet), class: "btn btn-primary rounded-pill w-100 mt-3" do %>
 			   <i class="fa-solid fa-plus me-1"></i> Add Measurement
 			 <% end %>
 		   </div>
 		 </div>
 	   </div>
-	
+
 	   <!-- Card Traitements en cours -->
 	   <div class="col-md-4">
 		 <div class="card h-100 shadow-sm">
 		   <div class="card-body">
 			 <div class="d-flex justify-content-between align-items-center mb-4">
 			   <h5 class="card-title mb-0">Active Treatments</h5>
+
 			   <%= link_to pet_treatments_path(@pet), class: "btn btn-sm btn-outline-primary rounded-pill" do %>
 				 View All <i class="fa-solid fa-arrow-right ms-1"></i>
 			   <% end %>
 			 </div>
-	
+
 			 <% if @active_treatments.any? %>
 			   <div class="list-group list-group-flush">
 				 <% @active_treatments.each do |treatment| %>
@@ -129,7 +152,7 @@
 			 <% else %>
 			   <p class="text-muted text-center my-4">No active treatments</p>
 			 <% end %>
-	
+
 			 <%= link_to new_pet_treatment_path(@pet), class: "btn btn-primary rounded-pill w-100 mt-3" do %>
 			   <i class="fa-solid fa-plus me-1"></i> Add Treatment
 			 <% end %>
@@ -173,7 +196,3 @@
 	 </div>
 	</div>
 </div>
-
-
-
-
