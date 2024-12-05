@@ -1,4 +1,3 @@
-<!-- filepath: /root/code/fannyevepl/buddy/app/views/hygienes/new.html.erb -->
 <div data-page-name="<%= page_name %>">
   <%= render "pets/navbar_dashboard" %>
   <div class="container-fluid text-primary py-0">
@@ -13,6 +12,7 @@
           <%= simple_form_for [@pet, @hygiene], html: { class: 'form-horizontal' } do |form| %>
             <div class="mb-4 text-center">
               <%= form.input :hygiene_type,
+                  collection: Hygiene.hygiene_types.keys.map { |type| [type.capitalize, type] },
                   label: "<strong>Hygiene Type</strong>".html_safe,
                   required: true,
                   input_html: { class: "form-control text-center bg-white" } %>

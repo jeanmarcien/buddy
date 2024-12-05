@@ -5,6 +5,10 @@ class HygienesController < ApplicationController
 
   def index
     @hygienes = @pet.hygienes
+    respond_to do |format|
+      format.html # renders app/views/hygienes/index.html.erb
+      format.json { render json: @hygienes }
+    end
   end
 
   def new
