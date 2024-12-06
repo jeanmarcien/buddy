@@ -1,7 +1,7 @@
 class TreatmentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_pet
-  before_action :set_treatment, only: [:edit, :update, :destroy]
+  before_action :set_treatment, only: [:edit, :update, :destroy, :details]
   
   def index
     @treatments = @pet.treatments.order(start_date: :desc)
@@ -35,6 +35,12 @@ class TreatmentsController < ApplicationController
   def destroy
     @treatment.destroy
     redirect_to pet_treatments_path(@pet), notice: 'Treatment successfully deleted.'
+  end
+  
+  def details
+    # @pet = Pet.find(params[:pet_id])
+    @treatment = @pet.treatments.find(params[:id])
+    render json: @treatment
   end
 
   private
