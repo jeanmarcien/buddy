@@ -12,6 +12,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @recent_measurements = @pet.measurements.order(date: :desc).limit(3)
     @active_treatments = @pet.treatments.where("end_date >= ?", Date.today).order(end_date: :asc).limit(3)
+    @recent_activities = @pet.activities.order(created_at: :desc).limit(3)
   end
 
   def new
@@ -44,7 +45,7 @@ class PetsController < ApplicationController
     @pet.destroy
     redirect_to pets_path, notice: 'Pet successfully deleted.'
   end
-  
+
   def calendar
   end
 
