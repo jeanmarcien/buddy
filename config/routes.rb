@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'calendar', on: :member  
     resources :treatments
     resources :measurements
+    resources :activities, only: [:index, :new, :create, :edit, :update, :destroy]
   end
   
   resources :calendars, only: [:index]
