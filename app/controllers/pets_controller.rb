@@ -2,7 +2,7 @@ class PetsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
   before_action :verify_pet_owner, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @pets = current_user.pets.order(:name)
   end
@@ -11,6 +11,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @recent_measurements = @pet.measurements.order(date: :desc).limit(3)
     @active_treatments = @pet.treatments.where("end_date >= ?", Date.today).order(end_date: :asc).limit(3)
+    @recent_activities = @pet.activities.order(created_at: :desc).limit(3)
   end
 
   def new
@@ -55,7 +56,7 @@ class PetsController < ApplicationController
   def pet_params
     params.require(:pet).permit(:name, :specie, :gender, :breed, :birth_day, :vet_id)
   end
-  
+
   def verify_pet_owner
     unless @pet.user == current_user
       flash[:alert] = "Vous n'êtes pas autorisé à accéder à cet animal"

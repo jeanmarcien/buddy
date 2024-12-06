@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :pets do
     resources :treatments
     resources :measurements
+    resources :activities, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
 
