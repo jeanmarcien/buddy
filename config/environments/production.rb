@@ -15,7 +15,7 @@ Rails.application.configure do
   config.require_master_key = true
   
   # Asset pipeline configuration
-  config.assets.compile = true
+  config.assets.compile = false
   config.assets.initialize_on_precompile = false
   
   # Active Storage configuration
