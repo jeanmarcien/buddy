@@ -12,7 +12,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   
   # Ensure master key is present for encrypted credentials
-  config.require_master_key = true
+  config.require_master_key = false
   
   # Asset pipeline configuration
   config.assets.compile = false
