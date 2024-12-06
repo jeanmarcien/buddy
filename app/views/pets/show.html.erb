@@ -24,12 +24,11 @@
 			 <% if @pet.photo.present? %>
 
 			   <%= cl_image_tag @pet.photo.key, 
-				   width: 280, 
-				   height: 280, 
-				   crop: :fill, 
-				   radius: :max,
-				   gravity: :face, # optionnel : centre sur le visage si c'est une photo de profil
-				   class: "rounded"
+								width: 220, 
+								height: 220, 
+								crop: :fill, 
+								gravity: :face,
+								style: "border-radius: 50%;"
 			   %>
 			 <% else %>
 			   <%= image_tag(image_file, height: 260, class: "rounded") %>
