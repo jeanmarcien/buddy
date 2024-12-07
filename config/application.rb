@@ -16,12 +16,6 @@ module Buddy
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
-    
-    # Ajoutez ces configurations
-    config.assets.enabled = true
-    config.assets.version = '1.0'
-    config.sass.preferred_syntax = :scss
-    config.assets.css_compressor = nil  # En développement, désactivez la compression
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.

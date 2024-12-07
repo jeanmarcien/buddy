@@ -10,13 +10,4 @@ Rails.application.config.assets.version = "1.0"
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
-# Ajoutez vos fichiers SCSS à la liste de précompilation
-Rails.application.config.assets.precompile += %w(
-  bootstrap.min.js 
-  popper.js
-  application.scss    # Votre fichier SCSS principal
-  *.scss             # Tous les fichiers SCSS
-)
-
-# Assurez-vous que les chemins d'assets sont correctement configurés
-Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets')
+Rails.application.config.assets.precompile += %w(bootstrap.min.js popper.js)
