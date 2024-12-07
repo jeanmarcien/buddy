@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'calendar', on: :member  
     resources :treatments
     resources :measurements
+    resources :activities, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :hygienes # Ajout des routes pour les hygienes
   end
 

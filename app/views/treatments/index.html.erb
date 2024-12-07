@@ -9,7 +9,7 @@
 		   </h1>
 		 </div>
 	   </div>
-	
+
 	   <div class="row">
 		 <div class="col-12">
 		   <% if @treatments.any? %>
@@ -18,7 +18,7 @@
 				 <thead>
 				   <tr>
 					 <th scope="col">Nom</th>
-					 <th scope="col">Type</th> 
+					 <th scope="col">Type</th>
 					 <th scope="col">Début</th>
 					 <th scope="col">Fin</th>
 					 <th scope="col">Dosage</th>
@@ -43,7 +43,7 @@
 						 <%= link_to edit_pet_treatment_path(@pet, treatment), class: "btn btn-sm btn-outline-primary me-2" do %>
 						   <i class="fa-regular fa-pen-to-square"></i>
 						 <% end %>
-						 <%= link_to pet_treatment_path(@pet, treatment), 
+						 <%= link_to pet_treatment_path(@pet, treatment),
 							 data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer ce traitement ?" },
 							 class: "btn btn-sm btn-outline-danger" do %>
 						   <i class="fa-regular fa-trash-can"></i>
@@ -61,17 +61,15 @@
 		   <% end %>
 		   <div class="d-flex justify-content-center gap-4">
 				 <div class="text-center">
-					<%= link_to 'Cancel', pet_path(@pet), class: "btn btn-secondary rounded-pill" %>
+					<%= link_to 'Back', pet_path(@pet), class: "btn btn-secondary rounded-pill" %>
 				  </div>
-				  
+
 				   <%= link_to new_pet_treatment_path(@pet), class: "btn btn-primary rounded-pill" do %>
 					  <i class="fa-solid fa-plus me-2"></i>Ajouter un traitement
 					<% end %>
 			</div>
-		   
+
 		 </div>
 	   </div>
 	 </div>
 	</div>
-
-

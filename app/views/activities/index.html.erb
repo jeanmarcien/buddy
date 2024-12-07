@@ -1,0 +1,69 @@
+<div data-page-name="<%= page_name %>">
+  <%= render "pets/navbar_dashboard" %>
+  <div class="container-fluid text-primary py-0">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-12 col-lg-8 mx-auto text-center">
+          <h1 class="display-4 display-md-5 fw-bold mb-4">
+            Training Activities for <%= @pet.name %>
+          </h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <% if @activities.any? %>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Notes</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @activities.each do |activity| %>
+                    <tr>
+                      <td><%= activity.created_at&.strftime("%d/%m/%Y") || "Unknown Date" %></td>
+                      <td class="text-capitalize"><%= activity.training_type %></td>
+                      <td><%= activity.rating %>/10</td>
+                      <td><%= activity.notes %></td>
+                      <td>
+                        <% if activity.id.present? %>
+                          <%= link_to edit_pet_activity_path(@pet, activity), class: "btn btn-sm btn-outline-primary me-2" do %>
+                            <i class="fa-regular fa-pen-to-square"></i>
+                          <% end %>
+                          <%= link_to pet_activity_path(@pet, activity),
+                              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                              class: "btn btn-sm btn-outline-danger" do %>
+                            <i class="fa-regular fa-trash-can"></i>
+                          <% end %>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          <% else %>
+            <div class="text-center py-5">
+              <p class="mb-4">No activities recorded yet.</p>
+            </div>
+          <% end %>
+
+          <div class="d-flex justify-content-center gap-4">
+            <div class="text-center">
+              <%= link_to 'Back', pet_path(@pet), class: "btn btn-secondary rounded-pill" %>
+            </div>
+            <%= link_to new_pet_activity_path(@pet), class: "btn btn-primary rounded-pill" do %>
+              <i class="fa-solid fa-plus me-2"></i>Log a New Activity
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

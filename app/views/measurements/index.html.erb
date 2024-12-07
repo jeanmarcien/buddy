@@ -7,7 +7,7 @@
 			  <h1 class="display-4 display-md-5 fw-bold">Measurements for <%= @pet.name %></h1>
 			</div>
 		  </div>
-	
+
 		  <div class="row">
 			<div class="col-12">
 			  <% if @measurements.any? %>
@@ -25,7 +25,7 @@
 					<tbody>
 					  <% @measurements.each do |measurement| %>
 						<tr>
-						  <td><%= measurement.date.strftime("%B %d, %Y") %></td>
+              <td><%= measurement.date&.strftime("%B %d, %Y") || "Unknown Date" %></td>
 						  <td class="text-capitalize"><%= measurement.measurement_type %></td>
 						  <td>
 							<%= measurement.value %>
@@ -36,7 +36,7 @@
 							<%= link_to edit_pet_measurement_path(@pet, measurement), class: "btn btn-sm btn-outline-primary me-2" do %>
 							  <i class="fa-regular fa-pen-to-square"></i>
 							<% end %>
-							<%= link_to pet_measurement_path(@pet, measurement), 
+							<%= link_to pet_measurement_path(@pet, measurement),
 								data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
 								class: "btn btn-sm btn-outline-danger" do %>
 							  <i class="fa-regular fa-trash-can"></i>
@@ -52,12 +52,12 @@
 				  <p class="mb-4">No measurements recorded yet.</p>
 				</div>
 			  <% end %>
-			  
+
 			 <div class="d-flex justify-content-center gap-4">
 				  <div class="text-center">
-					 <%= link_to 'Cancel', pet_path(@pet), class: "btn btn-secondary rounded-pill" %>
+					 <%= link_to 'Back', pet_path(@pet), class: "btn btn-secondary rounded-pill" %>
 				   </div>
-				   
+
 					<%= link_to new_pet_measurement_path(@pet), class: "btn btn-primary rounded-pill" do %>
 					  <i class="fa-solid fa-plus me-2"></i>Add New Measurement
 					<% end %>
@@ -81,9 +81,3 @@
 		  </div>
 	  </div>
 </div>
-
-
-
-
-
-
