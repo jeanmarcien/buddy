@@ -2,7 +2,6 @@ class Hygiene < ApplicationRecord
   belongs_to :pet
 
   enum hygiene_type: {
-    nutrition: 0,
     groom: 1,
     teeth: 2,
     claw: 3,

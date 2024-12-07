@@ -1,7 +1,7 @@
 <%= simple_form_for [@pet, @hygiene], html: { class: 'form-horizontal' } do |form| %>
   <div class="mb-4 text-center">
     <%= form.input :hygiene_type,
-        collection: Hygiene.hygiene_types.keys.map { |type| [type.capitalize, type] },
+        collection: Hygiene.hygiene_types.keys.reject { |type| type == 'nutrition' }.map { |type| [type.capitalize, type] },
         label: "<strong>Hygiene Type</strong>".html_safe,
         prompt: "Select a hygiene type",
         required: true,
