@@ -1,22 +1,68 @@
-<%# ...existing code... %>
-<div class="btn-group mb-4" role="group" aria-label="Hygiene Types">
-  <% Hygiene.hygiene_types.keys.each do |type| %>
-    <%= link_to pet_hygienes_path(type: type), class: "btn btn-outline-primary" do %>
-      <%= type.capitalize %>
-    <% end %>
-  <% end %>
-</div>
+<div data-page-name="<%= page_name %>">
+  <%= render "pets/navbar_dashboard" %>
+  <div class="container-fluid text-primary py-0">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-12 col-lg-8 mx-auto text-center">
+          <h1 class="display-4 display-md-5 fw-bold mb-4">
+            Hygiene Records for <%= @pet.name %>
+          </h1>
+        </div>
+      </div>
 
-<% Hygiene.hygiene_types.keys.each do |type| %>
-  <h3><%= type.capitalize %></h3>
-  <% @hygienes.where(hygiene_type: type).each do |hygiene| %>
-    <div class="list-group-item border-0 px-0">
-      <h6 class="mb-1 text-capitalize"><%= hygiene.hygiene_type %></h6>
-      <p class="mb-1 small"><%= hygiene.date.strftime("%B %d, %Y") %> - <%= hygiene.frequency %> times</p>
-      <div class="d-flex justify-content-between align-items-center">
-        <small class="text-muted"><%= hygiene.note %></small>
+      <div class="row">
+        <div class="col-12">
+          <% if @hygienes.any? %>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Frequency</th>
+                    <th scope="col">Notes</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @hygienes.each do |hygiene| %>
+                    <tr>
+                      <td class="text-capitalize"><%= hygiene.hygiene_type %></td>
+                      <td><%= hygiene.date.strftime("%B %d, %Y") %></td>
+                      <td><%= hygiene.frequency.present? ? hygiene.frequency : 'N/A' %></td>
+                      <td><%= hygiene.note %></td>
+                      <td>
+                        <%= link_to edit_pet_hygiene_path(@pet, hygiene), class: "btn btn-sm btn-outline-primary me-2" do %>
+                          <i class="fa-regular fa-pen-to-square"></i>
+                        <% end %>
+                        <%= link_to pet_hygiene_path(@pet, hygiene), 
+                            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                            class: "btn btn-sm btn-outline-danger" do %>
+                          <i class="fa-regular fa-trash-can"></i>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          <% else %>
+            <div class="text-center py-5">
+              <p class="mb-4">No hygiene records yet.</p>
+            </div>
+          <% end %>
+          <div class="d-flex justify-content-center gap-4">
+            <div class="text-center">
+              <%= link_to 'Cancel', pet_path(@pet), class: "btn btn-secondary rounded-pill" %>
+            </div>
+            <div class="text-center">
+              <%= link_to new_pet_hygiene_path(@pet), class: "btn btn-primary rounded-pill" do %>
+                <i class="fa-solid fa-plus me-2"></i>Add Hygiene Record
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  <% end %>
-<% end %>
-<%# ...existing code... %>
+  </div>
+</div>

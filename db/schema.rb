@@ -42,6 +42,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_04_013254) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "hygienes", force: :cascade do |t|
+    t.string "hygiene_type"
+    t.date "date"
+    t.string "frequency"
+    t.text "note"
+    t.bigint "pet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_hygienes_on_pet_id"
+  end
+
   create_table "measurements", force: :cascade do |t|
     t.integer "measurement_type", null: false
     t.float "value"
@@ -123,6 +134,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_04_013254) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "hygienes", "pets"
   add_foreign_key "measurements", "pets"
   add_foreign_key "pets", "users"
   add_foreign_key "pets", "vets"

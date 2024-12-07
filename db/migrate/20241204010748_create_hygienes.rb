@@ -3,7 +3,7 @@ class CreateHygienes < ActiveRecord::Migration[7.1]
     create_table :hygienes do |t|
       t.string :hygiene_type
       t.date :date
-      t.integer :frequency
+      t.string :frequency
       t.text :note
       t.references :pet, null: false, foreign_key: true
 

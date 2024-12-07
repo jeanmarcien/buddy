@@ -1,57 +1,14 @@
-<div data-page-name="<%= page_name %>">
-  <%= render "pets/navbar_dashboard" %>
-  <div class="container-fluid text-primary py-0">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-12 col-lg-8 mx-auto text-center">
-          <h1 class="display-4 display-md-5 fw-bold mb-4">Add New Hygiene Record for <%= @pet.name %></h1>
-        </div>
+<%= render "pets/navbar_dashboard" %>
+<div class="container-fluid text-primary py-0">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-12 col-lg-8 mx-auto text-center">
+        <h1 class="display-4 display-md-5 fw-bold mb-4">Add a new hygiene record for <%= @pet.name %></h1>
       </div>
-      <div class="row">
-        <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
-          <%= simple_form_for [@pet, @hygiene], html: { class: 'form-horizontal' } do |form| %>
-            <div class="mb-4 text-center">
-              <%= form.input :hygiene_type,
-                  collection: Hygiene.hygiene_types.keys.map { |type| [type.capitalize, type] },
-                  label: "<strong>Hygiene Type</strong>".html_safe,
-                  required: true,
-                  input_html: { class: "form-control text-center bg-white" } %>
-            </div>
-            <div class="mb-4 text-center">
-              <label class="form-label">
-                <strong>Date</strong>
-              </label>
-              <div class="input-group">
-                <%= form.input :date,
-                    label: false,
-                    as: :string,
-                    required: true,
-                    wrapper: false,
-                    input_html: { 
-                      data: { controller: "datepicker" },
-                      class: "form-control text-center bg-white"
-                    } %>
-                <span class="input-group-text">
-                  <i class="fa-regular fa-calendar"></i>
-                </span>
-              </div>
-            </div>
-            <div class="mb-4 text-center">
-              <%= form.input :frequency,
-                  label: "<strong>Frequency</strong>".html_safe,
-                  required: true,
-                  input_html: { class: "form-control text-center bg-white" } %>
-            </div>
-            <div class="mb-4 text-center">
-              <%= form.input :note,
-                  label: "<strong>Note</strong>".html_safe,
-                  input_html: { class: "form-control text-center bg-white" } %>
-            </div>
-            <div class="form-actions text-center">
-              <%= form.button :submit, "Add Hygiene Record", class: "btn btn-primary rounded-pill" %>
-            </div>
-          <% end %>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
+        <%= render "form" %>
       </div>
     </div>
   </div>

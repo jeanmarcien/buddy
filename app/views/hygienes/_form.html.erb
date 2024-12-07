@@ -1,0 +1,58 @@
+<%= simple_form_for [@pet, @hygiene], html: { class: 'form-horizontal' } do |form| %>
+  <div class="mb-4 text-center">
+    <%= form.input :hygiene_type,
+        collection: Hygiene.hygiene_types.keys.map { |type| [type.capitalize, type] },
+        label: "<strong>Hygiene Type</strong>".html_safe,
+        prompt: "Select a hygiene type",
+        required: true,
+        input_html: { class: "form-control text-center bg-white" } %>
+  </div>
+
+  <div class="mb-4 text-center">
+    <label class="form-label">
+      <strong>Date</strong>
+    </label>
+    <div class="input-group">
+      <%= form.input :date,
+          label: false,
+          as: :string,
+          required: true,
+          wrapper: false,
+          input_html: { 
+            data: { controller: "datepicker" },
+            class: "form-control text-center bg-white"
+          } %>
+      <span class="input-group-text">
+        <i class="fa-regular fa-calendar"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="mb-4 text-center">
+    <%= form.input :frequency,
+        label: "<strong>Frequency</strong>".html_safe,
+        as: :string,
+        required: true,
+        placeholder: "Ex: Once daily",
+        input_html: { class: "form-control text-center bg-white" } %>
+  </div>
+
+  <div class="mb-4 text-center">
+    <%= form.input :note,
+        label: "<strong>Note</strong>".html_safe,
+        required: false,
+        input_html: { 
+          class: "form-control text-center bg-white",
+          rows: 3
+        } %>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <div class="text-center">
+      <%= link_to 'Cancel', pet_hygienes_path(@pet), class: "btn btn-secondary rounded-pill" %>
+    </div>
+    <div class="text-center">
+      <%= form.button :submit, form.object.new_record? ? "Add Hygiene Record" : "Update Hygiene Record", class: "btn btn-primary rounded-pill" %>
+    </div>
+  </div>
+<% end %>

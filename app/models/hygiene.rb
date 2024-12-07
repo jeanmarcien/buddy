@@ -13,5 +13,5 @@ class Hygiene < ApplicationRecord
 
   validates :hygiene_type, presence: true, inclusion: { in: hygiene_types.keys }
   validates :date, presence: true
-  validates :frequency, presence: true, numericality: { greater_than: 0 }
+  validates :frequency, presence: true
 end

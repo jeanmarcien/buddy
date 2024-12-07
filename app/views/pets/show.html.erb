@@ -24,8 +24,8 @@
 			 <% if @pet.photo.present? %>
 
 			   <%= cl_image_tag @pet.photo.key, 
-				   width: 280, 
-				   height: 280, 
+				   width: 220, 
+				   height: 220, 
 				   crop: :fill, 
 				   radius: :max,
 				   gravity: :face, # optionnel : centre sur le visage si c'est une photo de profil

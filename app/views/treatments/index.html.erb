@@ -36,7 +36,7 @@
 					   <td><%= treatment.start_date.strftime("%d/%m/%Y") %></td>
 					   <td><%= treatment.end_date&.strftime("%d/%m/%Y") %></td>
 					   <td><%= treatment.dosage %></td>
-					   <td><%= treatment.frequency %></td>
+					   <td><%= treatment.frequency.present? ? treatment.frequency : 'N/A' %></td>
 					   <td><%= treatment.renew_date&.strftime("%d/%m/%Y") %></td>
 					   <td><%= treatment.notes %></td>
 					   <td>
@@ -73,5 +73,5 @@
 	   </div>
 	 </div>
 	</div>
-	
-	
+
+
