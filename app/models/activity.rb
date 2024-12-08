@@ -1,5 +1,6 @@
 class Activity < ApplicationRecord
   belongs_to :pet
+  has_one_attached :video
 
   TRAINING_TYPES = ['sit', 'stay', 'roll over', 'heel']
 
@@ -7,5 +8,9 @@ class Activity < ApplicationRecord
 
   validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 10 }
 
-  validates :video_url, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: 'must be a valid URL' }, allow_blank: true
+  def correct_video_mime_type
+    if video.attached? && !video.content_type.in?(%w[video/mp4 video/quicktime video/mpeg video/avi])
+      errors.add(:video, 'must be a valid video format (mp4, quicktime, mpeg, avi)')
+    end
+  end
 end
