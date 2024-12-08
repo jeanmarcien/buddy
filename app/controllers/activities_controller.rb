@@ -1,10 +1,9 @@
 class ActivitiesController < ApplicationController
   before_action :set_pet
+  before_action :set_activity, only: [:edit, :update, :destroy]
 
   def index
-    @pet = Pet.find(params[:pet_id])
     @activities = @pet.activities
-    @activity = @pet.activities.new
   end
 
   def new
@@ -16,21 +15,25 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to pet_activities_path(@pet), notice: 'Activity added successfully!'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    @activity = @pet.activities.find(params[:id])
   end
 
   def update
-    @activity = @pet.activities.find(params[:id])
     if @activity.update(activity_params)
       redirect_to pet_activities_path(@pet), notice: 'Activity updated successfully!'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @activity = @pet.activities.find(params[:id])
+    @activity.destroy
+    redirect_to pet_activities_path(@pet), notice: 'Activity deleted successfully!'
   end
 
   private
@@ -39,7 +42,11 @@ class ActivitiesController < ApplicationController
     @pet = Pet.find(params[:pet_id])
   end
 
+  def set_activity
+    @activity = @pet.activities.find(params[:id])
+  end
+
   def activity_params
-    params.require(:activity).permit(:training_type, :rating, :notes, :video_url)
+    params.require(:activity).permit(:training_type, :rating, :notes, :video)
   end
 end
