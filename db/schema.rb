@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_04_015552) do
     t.bigint "pet_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "reminder", precision: nil
     t.index ["pet_id"], name: "index_hygienes_on_pet_id"
   end
 

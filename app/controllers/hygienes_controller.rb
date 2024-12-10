@@ -51,6 +51,6 @@ class HygienesController < ApplicationController
   end
 
   def hygiene_params
-    params.require(:hygiene).permit(:hygiene_type, :date, :frequency, :note)
+    params.require(:hygiene).permit(:hygiene_type, :date, :frequency, :note, :reminder)
   end
 end

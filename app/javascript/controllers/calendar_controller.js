@@ -81,6 +81,10 @@ Date: ${new Date(info.event.start).toLocaleDateString("en-US")}`;
           "en-US"
         )}</div>
 			</div>
+			<div class="row mb-2">
+			  <div class="col-4"><strong>Reminders:</strong></div>
+			  <div class="col-8">${data.reminders ? data.reminders.join(", ") : "No reminders set"}</div>
+			</div>
 			${
         data.notes
           ? `
