@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_04_015552) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_11_020902) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_04_015552) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pet_id"], name: "index_measurements_on_pet_id"
+  end
+
+  create_table "nutritions", force: :cascade do |t|
+    t.bigint "pet_id", null: false
+    t.integer "times_per_day"
+    t.integer "quantity"
+    t.string "food_type"
+    t.string "brand"
+    t.decimal "price"
+    t.date "reminder_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_nutritions_on_pet_id"
   end
 
   create_table "pets", force: :cascade do |t|
@@ -136,6 +149,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_04_015552) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "pets"
   add_foreign_key "measurements", "pets"
+  add_foreign_key "nutritions", "pets"
   add_foreign_key "pets", "users"
   add_foreign_key "pets", "vets"
   add_foreign_key "treatments", "pets"

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :treatments
     resources :measurements
     resources :activities, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :nutritions, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
   resources :calendars, only: [:index]

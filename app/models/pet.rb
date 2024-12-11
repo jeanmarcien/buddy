@@ -14,7 +14,7 @@ class Pet < ApplicationRecord
   has_many :treatments, dependent: :destroy
   has_many :measurements, dependent: :destroy
   # has_many :physical_records
-  # has_many :nutritions
+  has_many :nutritions, dependent: :destroy
   has_many :activities, dependent: :destroy
   has_many :vet_appointments
   has_one_attached :photo
