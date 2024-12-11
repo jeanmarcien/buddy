@@ -10,8 +10,14 @@ class Hygiene < ApplicationRecord
     ears: 6
   }
 
+  attribute :reminder, :datetime
+
   validates :hygiene_type, presence: true, inclusion: { in: hygiene_types.keys }
   validates :date, presence: true
   validates :frequency, presence: true
   validates :reminder, presence: false
+
+  def display_hygiene_type
+    hygiene_type.humanize
+  end
 end
