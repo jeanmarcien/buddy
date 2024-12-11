@@ -6,8 +6,7 @@ export default class extends Controller {
     flatpickr(this.element, {
       dateFormat: "Y-m-d",
       allowInput: true,
-      maxDate: "today",
-      minDate: "2000-01-01",
+      minDate: "2000-01-01", // Remove maxDate to allow future dates
     });
   }
 }

@@ -1,0 +1,151 @@
+[33m5e38227[m[33m ([m[1;36mHEAD -> [m[1;32mhygiene-2[m[33m, [m[1;31morigin/hygiene-2[m[33m)[m Merge branch 'master' into hygiene-2
+[33mb6e2e86[m put de reminder
+[33mf91b134[m ajout de l'édit dans le controller
+[33ma77ccec[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m Merge pull request #51 from jeanmarcien/new-avatar
+[33m6af1c78[m[33m ([m[1;31morigin/new-avatar[m[33m)[m new avatar
+[33m6b23196[m done and remove nutrition
+[33m766c24f[m Merge branch 'master' into hygiene-2
+[33m70b5595[m Merge pull request #49 from jeanmarcien/french-to-english
+[33m8fd5446[m[33m ([m[1;31morigin/french-to-english[m[33m)[m translate text to english
+[33m252c957[m Merge pull request #48 from jeanmarcien/logo-nav-link
+[33m62de6ff[m logo home link
+[33mdfaa9e8[m done
+[33m01b76a4[m Merge branch 'master' of github.com:jeanmarcien/buddy into hygiene-2
+[33mc0ff379[m config files
+[33mce98922[m Merge pull request #47 from jeanmarcien/nav-link-section
+[33mf38f247[m[33m ([m[1;31morigin/nav-link-section[m[33m)[m change btn name from cancel to back
+[33m6fb65fb[m[33m ([m[1;32mhygiene[m[33m)[m maj
+[33m09d2395[m Merge pull request #46 from jeanmarcien/align-buttons-dashboard
+[33m40621a7[m align dashboard buttons
+[33macbb70e[m scss fix
+[33macb080c[m cloudinary correction
+[33m680510b[m Merge pull request #45 from jeanmarcien/img-size-cloudinary
+[33m1f18e4c[m Merge branch 'master' into img-size-cloudinary
+[33mf5f30d0[m cloudinary rounded img
+[33mfef3675[m Merge pull request #44 from jeanmarcien/activities
+[33m59e4033[m typo config
+[33m66116c8[m error deploy fix
+[33ma57bd08[m meta
+[33mf7e5af0[m Merge branch 'master' into hygiene
+[33mc3f8843[m meta
+[33m37cdd4b[m[33m ([m[1;31morigin/activities[m[33m)[m activities done
+[33m969dd06[m activities 2
+[33m93bafaf[m activities section done
+[33m47a1613[m heroku config
+[33m9719234[m Trigger Heroku deploy
+[33m390f4bc[m Trigger Heroku deploy
+[33m0380493[m Heroku error
+[33m64cbf9b[m Update production configuration
+[33m7117fd6[m[33m ([m[1;31morigin/hygiene[m[33m)[m Merge branch 'master' into hygiene
+[33m6d513ab[m Reset credentials
+[33mc8cd14a[m Remove credentials from git
+[33m1b59789[m maj
+[33m2be6c45[m heroku error fx
+[33m3b3ac12[m Merge pull request #43 from jeanmarcien/meta-tags
+[33m4f48c24[m meta tags
+[33meb9ed43[m Merge pull request #42 from jeanmarcien/favicon
+[33mc5df7fb[m last one
+[33mb4744e6[m add icons for all sizes
+[33mdbdb0ec[m favicon
+[33m0ac6f67[m Merge pull request #41 from jeanmarcien/rounded-img
+[33m7b741df[m ajust size to 280px
+[33m2f595df[m add cloudinary options for img
+[33me607a3e[m remove text shadow
+[33ma63ad9e[m correction bck-image
+[33mb7ab1e7[m Merge pull request #40 from jeanmarcien/add-pet-picture
+[33mb5ab857[m Merge branch 'master' into add-pet-picture
+[33mcb57d5a[m added the pet photo to the form and dashboards
+[33mf1efc8c[m Merge pull request #39 from jeanmarcien/full-calendar
+[33m7fb7e11[m calendar link into pet dashboard
+[33m3bf95f9[m Merge pull request #38 from jeanmarcien/full-calendar
+[33mc138c86[m[33m ([m[1;31morigin/full-calendar[m[33m)[m Affichage des rappels dans le calendrier
+[33mecf093f[m maj
+[33ma24678a[m creation de hygiene
+[33m7f31628[m css for the calendar
+[33mef7e132[m working blank month calendar
+[33m836690a[m calendar importmap
+[33m2d85d4e[m[33m ([m[1;31morigin/add-pet-picture[m[33m)[m Initial version
+[33mbb766ee[m Merge pull request #37 from jeanmarcien/img-home-page
+[33mff99c47[m add home page illustrations
+[33m3545fd7[m order asc for charts.js
+[33m1f60b2a[m Merge pull request #36 from jeanmarcien/chart-js
+[33m533dbc8[m chart.js for height and weight with stimulus in mesearement dashboard
+[33mcfad2ed[m make breed optionnal
+[33mc1fa0f5[m Merge pull request #35 from jeanmarcien/complete-pet-crud
+[33m6ca27d3[m add remove crud for a pet and add dependent for treatmentsand measurements in pet model
+[33me29ca87[m Merge pull request #34 from jeanmarcien/welcome-text-pet-dash
+[33m522dac0[m text pet dashboard welcome text if @pets empty
+[33ma777b7c[m Merge pull request #33 from jeanmarcien/models-validations
+[33mc1ec38d[m models validations
+[33mc3aa342[m typo
+[33m1ecba55[m Merge pull request #32 from jeanmarcien/form-treatments
+[33m8f5308b[m pet dashboard with preview cards
+[33m5b650e0[m treatments actions and forms,update pet index
+[33m8149305[m navigation for pets and pet measurement - edit pet profil form - pet index tmp
+[33m0a2247c[m Merge pull request #31 from jeanmarcien/form-measurement
+[33m650eab7[m index, forms and actions for measurement
+[33mefebe7d[m Merge pull request #30 from jeanmarcien/new-controllers
+[33ma91a5b3[m controllers for measurement and treatment
+[33m71bb9b6[m relations in pet model
+[33md4ff705[m Merge pull request #29 from jeanmarcien/db-seed
+[33md0c0d37[m seed pour peupler la db
+[33mda0a3e0[m Merge pull request #28 from jeanmarcien/clean-the-routes
+[33m8c1d933[m Clean the routes
+[33m5cb0fab[m Merge pull request #26 from jeanmarcien/redirect-pet-creation
+[33m92dd259[m Merge pull request #27 from jeanmarcien/update-db
+[33m8a97380[m db new models
+[33m17e2ecc[m redirect the signup page
+[33mc844201[m Merge pull request #25 from jeanmarcien/slider-img
+[33m1699e8d[m slider img
+[33m336ba97[m[33m ([m[1;32mlink-index-show[m[33m)[m Merge pull request #24 from jeanmarcien/pet_home
+[33m4c61b85[m Merge branch 'master' of github.com:jeanmarcien/buddy into pet_home
+[33mc8dac34[m ready for first demo
+[33m2b289f5[m Merge pull request #23 from jeanmarcien/link-index-show
+[33ma94710d[m link done
+[33mb052dce[m Modified the Logout and FAQ button
+[33mde725e8[m ajout avatar
+[33m43ad2c3[m Added some vets to the list for default choice
+[33mcbcb67e[m maj
+[33m322e579[m Merge pull request #22 from jeanmarcien/pet_home
+[33mc03c326[m Pet home skeleton
+[33m3ee03ca[m logo devise
+[33m6d0fd88[m Merge pull request #21 from jeanmarcien/pet-show
+[33mca283db[m Pet show temp
+[33m9a438cd[m calendar icon for date of birth
+[33mbf7867b[m Create Pet button
+[33m85f0629[m Merge pull request #19 from jeanmarcien/flatpickr
+[33m7e63351[m flatpicker
+[33m8db461d[m Merge branch 'master' of github.com:jeanmarcien/buddy
+[33m586bbea[m Merge pull request #18 from jeanmarcien/test
+[33m12ae904[m Update routes
+[33m602c61e[m correct routes
+[33me6cc966[m Merge branch 'master' of github.com:jeanmarcien/buddy
+[33m6f709a8[m Merge pull request #16 from jeanmarcien/test
+[33m684f6a2[m Redirect link to home page
+[33m1addd8c[m Merge branch 'master' of github.com:jeanmarcien/buddy
+[33mdd38946[m bug
+[33m840b358[m migration bug
+[33m05db16c[m Merge pull request #14 from jeanmarcien/add-pet-profile
+[33me90d65b[m Update pet profile page
+[33mc6f96a0[m Merge pull request #13 from jeanmarcien/flash-messages
+[33m3565d71[m disparition automatique des messages flash
+[33mf48e671[m Updated the branch with latest changes from the master and updated the page to add a new pet
+[33md8580e7[m Updated SignUp link to add new pet
+[33m10023ba[m Merge pull request #12 from jeanmarcien/dashboard-navbar
+[33mb48639b[m typo
+[33me804565[m variables
+[33m6730a6a[m ajout navbar pour dashboard, ajout icone profil eet menu burger
+[33m3154655[m Merge pull request #11 from jeanmarcien/footer-linksm
+[33m706586c[m correction des liens du footer et de la redirection après la connexion
+[33mf631814[m Added page to add new pet
+[33m0ca0b7c[m Create _theme_fonts.scss
+[33m43e3526[m Update _index.scss
+[33m2d78290[m Merge pull request #10 from jeanmarcien/dashboard-page
+[33m331e114[m Merge branch 'dashboard-page' of github.com:jeanmarcien/buddy into dashboard-page
+[33mbc46b3e[m correction de bugs
+[33mdc2c8e5[m rollback
+[33maa0489c[m Merge branch 'master' into dashboard-page
+[33m4f24097[m Merge branch 'master' of github.com:jeanmarcien/buddy
+[33m5c72da8[m Delete app/assets/stylesheets/bootstrap-config/_theme_fonts.scss
+[33ma53fc48[m done
+[33m409ee16[m Merge pull request #8 from 

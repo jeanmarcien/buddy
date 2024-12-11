@@ -1,198 +1,224 @@
 <div data-page-name="<%= page_name %>">
-	<%= render "navbar_dashboard" %>
-	<div class="container py-5">
-		<div class="my-4 d-flex justify-content-between">
-			<%= link_to pets_path, class: "btn btn-outline-secondary rounded-pill" do %>
-				 Back to Dashboard
-			<% end %>
-			<%= link_to calendar_pet_path(@pet), class: "btn btn-outline-danger rounded-pill" do %>
-				Reminders calendar</i>
-			  <% end %>
-		</div>
-	 <!-- En-tête avec info principale du pet -->
-	 <div class="row mb-5">
-	   <div class="col-12">
-		 <% image_file = case @pet.specie
-				   when "Cat" then 'avatar/Cat.png'
-				   when "Dog" then 'avatar/Dog.png'
-				   when "Rabbit" then 'avatar/Rabbit.png'
-				   else 'avatar/Default.png'
-				   end %>
-		 <div class="card shadow-sm">
-		   <div class="card-body text-center">
-			 <h1 class="display-4 mb-4">Hi, I'm <%= @pet.name %></h1>
-			 <% if @pet.photo.present? %>
-			   <%= cl_image_tag @pet.photo.key, 
-								width: 220, 
-								height: 220, 
-								crop: :fill, 
-								gravity: :face,
-								style: "border-radius: 50%;"
-			   %>
-			 <% else %>
-			   <%= image_tag(image_file, height: 260, class: "rounded") %>
-			 <% end %>
-		   </div>
-		 </div>
-	   </div>
-	 </div>
+  <%= render "navbar_dashboard" %>
+  <div class="container py-5">
+    <div class="my-4 d-flex justify-content-between">
+      <%= link_to pets_path, class: "btn btn-outline-secondary rounded-pill" do %>
+        Back to Dashboard
+      <% end %>
+      <%= link_to calendar_pet_path(@pet), class: "btn btn-outline-danger rounded-pill" do %>
+        Reminders calendar
+      <% end %>
+    </div>
 
-	 <!-- Section Mesures et Traitements -->
-	 <div class="row g-4">
-	   <!-- Card Informations -->
-	   <div class="col-md-4">
-		 <div class="card h-100 shadow-sm">
-		   <div class="card-body card--dashboard ">
-			 <h5 class="card-title mb-4">Informations</h5>
-			 <ul class="list-unstyled  card-dashboard-button">
-			   <li class="mb-3">
-				 <i class="fa-solid fa-cake-candles me-2 text-primary"></i>
-				 <strong>Birthday:</strong> <%= @pet.birth_day.strftime("%B %d, %Y") %>
-			   </li>
-			   <li class="mb-3">
-				 <i class="fa-solid fa-clock me-2 text-primary"></i>
-				 <strong>Age:</strong> <%= ((Date.today - @pet.birth_day)/365).floor %> years old
-			   </li>
-			   <li class="mb-3">
-					<i class="fa-solid fa-paw me-2 text-primary"></i>
-					<strong>Specie:</strong> <%= @pet.specie %>
-				</li>
-			   <% if @pet.breed %>
-					<li class="mb-3">
-					  <i class="fa-solid fa-shield me-2 text-primary"></i>
-					  <strong>Breed:</strong> <%= @pet.breed %>
-					</li>
-				<% end %>
-				<li class="mb-3">
-					<i class="fa-solid fa-venus-mars me-2 text-primary"></i>
-					<strong>Gender:</strong> <%= @pet.gender %>
-				  </li>
-			   <% if @pet.vet %>
-				 <li class="mb-3">
-				   <i class="fa-solid fa-user-doctor me-2 text-primary"></i>
-				   <strong>Vet:</strong> Dr. <%= "#{@pet.vet.first_name} #{@pet.vet.last_name}" %>
-				 </li>
-			   <% end %>
-			 </ul>
-			 <%= link_to edit_pet_path(@pet), class: "btn btn-primary rounded-pill w-100 mt-3" do %>
-			 <i class="fa-solid fa-pen-to-square"></i>
-				 Update <%= @pet.name %> informations
-			 <% end %>
-		   </div>
-		 </div>
-	   </div>
+    <!-- Pet Info Header -->
+    <div class="row mb-5">
+      <div class="col-12">
+        <% image_file = case @pet.specie
+                       when "Cat" then 'avatar/Cat.png'
+                       when "Dog" then 'avatar/Dog.png'
+                       when "Rabbit" then 'avatar/Rabbit.png'
+                       else 'avatar/Default.png'
+                       end %>
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <h1 class="display-4 mb-4 text-primary">Hi, I'm <%= @pet.name %></h1>
+            <% if @pet.photo.present? %>
+              <%= cl_image_tag @pet.photo.key, width: 220, height: 220, crop: :fill, gravity: :face, style: "border-radius: 50%;" %>
+            <% else %>
+              <%= image_tag(image_file, height: 260, class: "rounded") %>
+            <% end %>
 
-	   <!-- Card Dernières Mesures -->
-	   <div class="col-md-4">
-		 <div class="card h-100 shadow-sm">
-		   <div class="card-body card--dashboard">
-			 <div class="d-flex justify-content-between align-items-center mb-4">
-			   <h5 class="card-title mb-0">Latest Measurements</h5>
-			   <%= link_to pet_measurements_path(@pet), class: "btn btn-sm btn-outline-primary rounded-pill" do %>
-				 View All <i class="fa-solid fa-arrow-right ms-1"></i>
-			   <% end %>
-			 </div>
-
-			 <% if @recent_measurements.any? %>
-			   <div class="list-group list-group-flush card-dashboard-button">
-				 <% @recent_measurements.each do |measurement| %>
-				   <div class="list-group-item border-0 px-0">
-					 <div class="d-flex justify-content-between align-items-center">
-					   <div>
-						 <h6 class="mb-0 text-capitalize"><%= measurement.measurement_type %></h6>
-						 <small class="text-muted"><%= measurement.date.strftime("%B %d, %Y") %></small>
-					   </div>
-					   <span class="badge bg-primary rounded-pill">
-						 <%= measurement.value %> <%= measurement.weight? ? 'kg' : 'cm' %>
-					   </span>
-					 </div>
-				   </div>
-				 <% end %>
-			   </div>
-			 <% else %>
-			   <p class="text-muted text-center my-4 card-dashboard-button">No measurements yet</p>
-			 <% end %>
-
-			 <%= link_to new_pet_measurement_path(@pet), class: "btn btn-primary rounded-pill w-100 mt-3" do %>
-			   <i class="fa-solid fa-plus me-1"></i> Add Measurement
-			 <% end %>
-		   </div>
-		 </div>
-	   </div>
-
-	   <!-- Card Traitements en cours -->
-	   <div class="col-md-4">
-		 <div class="card h-100 shadow-sm">
-		   <div class="card-body card--dashboard ">
-			 <div class="d-flex justify-content-between align-items-center mb-4">
-			   <h5 class="card-title mb-0">Active Treatments</h5>
-
-			   <%= link_to pet_treatments_path(@pet), class: "btn btn-sm btn-outline-primary rounded-pill" do %>
-				 View All <i class="fa-solid fa-arrow-right ms-1"></i>
-			   <% end %>
-			 </div>
-
-			 <% if @active_treatments.any? %>
-			   <div class="list-group list-group-flush card-dashboard-button">
-				 <% @active_treatments.each do |treatment| %>
-				   <div class="list-group-item border-0 px-0">
-					 <h6 class="mb-1 text-capitalize"><%= treatment.name %></h6>
-					 <p class="mb-1 small"><%= treatment.dosage %> - <%= treatment.frequency %></p>
-					 <div class="d-flex justify-content-between align-items-center">
-					   <small class="text-muted">Until <%= treatment.end_date.strftime("%B %d") %></small>
-					   <span class="badge bg-<%= treatment.end_date < Date.today + 7 ? 'warning' : 'success' %> rounded-pill text-capitalize">
-						 <%= treatment.treatment_type %>
-					   </span>
-					 </div>
-				   </div>
-				 <% end %>
-			   </div>
-			 <% else %>
-			   <p class="text-muted text-center my-4 card-dashboard-button">No active treatments</p>
-			 <% end %>
-
-			 <%= link_to new_pet_treatment_path(@pet), class: "btn btn-primary rounded-pill w-100 mt-3" do %>
-			   <i class="fa-solid fa-plus me-1"></i> Add Treatment
-			 <% end %>
-		   </div>
-		 </div>
-	   </div>
-
-    <!-- Card Training Activities -->
-    <div class="col-md-4">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body card--dashboard ">
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <h5 class="card-title mb-0">Training Activities</h5>
-            <%= link_to pet_activities_path(@pet), class: "btn btn-sm btn-outline-primary rounded-pill" do %>
-              View All <i class="fa-solid fa-arrow-right ms-1"></i>
+            <ul class="list-inline card-dashboard-button mt-4">
+              <li class="list-inline-item me-3">
+                <i class="fa-solid fa-cake-candles me-2 text-primary"></i>
+                <strong><u>Birthday</u>:</strong> <%= @pet.birth_day.strftime("%B %d, %Y") %>
+              </li>
+              <li class="list-inline-item me-3">
+                <i class="fa-solid fa-clock me-2 text-primary"></i>
+                <strong><u>Age</u>:</strong> <%= ((Date.today - @pet.birth_day) / 365).floor %> years old
+              </li>
+              <li class="list-inline-item me-3">
+                <i class="fa-solid fa-paw me-2 text-primary"></i>
+                <strong><u>Specie</u>:</strong> <%= @pet.specie %>
+              </li>
+              <% if @pet.breed %>
+                <li class="list-inline-item me-3">
+                  <i class="fa-solid fa-shield me-2 text-primary"></i>
+                  <strong><u>Breed</u>:</strong> <%= @pet.breed %>
+                </li>
+              <% end %>
+              <li class="list-inline-item me-3">
+                <i class="fa-solid fa-venus-mars me-2 text-primary"></i>
+                <strong><u>Gender</u>:</strong> <%= @pet.gender %>
+              </li>
+              <% if @pet.vet %>
+                <li class="list-inline-item me-3">
+                  <i class="fa-solid fa-user-doctor me-2 text-primary"></i>
+                  <strong>Vet:</strong> Dr. <%= "#{@pet.vet.first_name} #{@pet.vet.last_name}" %>
+                </li>
+              <% end %>
+            </ul>
+            <%= link_to edit_pet_path(@pet), class: "btn btn-primary rounded-pill w-25 mt-3 mb-3" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+              Update <%= @pet.name %>'s profile
             <% end %>
           </div>
+        </div>
+      </div>
+    </div>
 
-          <% if @recent_activities.any? %>
-            <div class="list-group list-group-flush card-dashboard-button">
-              <% @recent_activities.each do |activity| %>
-                <div class="list-group-item border-0 px-0">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                      <h6 class="mb-0 text-capitalize"><%= activity.training_type %></h6>
-                      <small class="text-muted"><%= activity.created_at.strftime("%B %d, %Y") %></small>
-                    </div>
-                    <span class="badge bg-primary rounded-pill">
-                      <%= activity.rating %>/10
-                    </span>
-                  </div>
-                  <p class="small text-muted mt-2"><%= activity.notes %></p>
-                </div>
+    <!-- Measurements and Treatments Section -->
+    <div class="row g-4">
+      <!-- Latest Measurements Card -->
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body card--dashboard">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h5 class="card-title mb-0">Latest Measurements</h5>
+              <%= link_to pet_measurements_path(@pet), class: "btn btn-sm btn-outline-primary rounded-pill" do %>
+                View All <i class="fa-solid fa-arrow-right ms-1"></i>
               <% end %>
             </div>
-          <% else %>
-            <p class="text-muted text-center my-4">No activities logged yet</p>
-          <% end %>
 
-          <%= link_to new_pet_activity_path(@pet), class: "btn btn-primary rounded-pill w-100 mt-3" do %>
-            <i class="fa-solid fa-plus me-1"></i> Log Activity
-          <% end %>
+            <% if @recent_measurements.any? %>
+              <div class="list-group list-group-flush card-dashboard-button">
+                <% @recent_measurements.each do |measurement| %>
+                  <div class="list-group-item border-0 px-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        <h6 class="mb-0 text-capitalize"><%= measurement.measurement_type %></h6>
+                        <small class="text-muted"><%= measurement.date.strftime("%B %d, %Y") %></small>
+                      </div>
+                      <span class="badge bg-primary rounded-pill">
+                        <%= measurement.value %> <%= measurement.weight? ? 'kg' : 'cm' %>
+                      </span>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <p class="text-muted text-center my-4 card-dashboard-button">No measurements yet</p>
+            <% end %>
+            <div class="d-flex justify-content-center">
+            <%= link_to new_pet_measurement_path(@pet), class: "btn btn-primary rounded-pill w-50 mt-3" do %>
+              <i class="fa-solid fa-plus me-1"></i> Add Measurement
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Treatments Card -->
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body card--dashboard">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h5 class="card-title mb-0">Active Treatments</h5>
+              <%= link_to pet_treatments_path(@pet), class: "btn btn-sm btn-outline-primary rounded-pill" do %>
+                View All <i class="fa-solid fa-arrow-right ms-1"></i>
+              <% end %>
+            </div>
+
+            <% if @active_treatments.any? %>
+              <div class="list-group list-group-flush card-dashboard-button">
+                <% @active_treatments.each do |treatment| %>
+                  <div class="list-group-item border-0 px-0">
+                    <h6 class="mb-1 text-capitalize"><%= treatment.name %></h6>
+                    <p class="mb-1 small"><%= treatment.dosage %> - <%= treatment.frequency %></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <small class="text-muted">Until <%= treatment.end_date.strftime("%B %d") %></small>
+                      <span class="badge bg-<%= treatment.end_date < Date.today + 7 ? 'warning' : 'success' %> rounded-pill text-capitalize">
+                        <%= treatment.treatment_type %>
+                      </span>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <p class="text-muted text-center my-4 card-dashboard-button">No active treatments</p>
+            <% end %>
+            <div class="d-flex justify-content-center">
+            <%= link_to new_pet_treatment_path(@pet), class: "btn btn-primary rounded-pill w-50 mt-3" do %>
+              <i class="fa-solid fa-plus me-1"></i> Add Treatment
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Training Activities Card -->
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body card--dashboard">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h5 class="card-title mb-0">Training Activities</h5>
+              <%= link_to pet_activities_path(@pet), class: "btn btn-sm btn-outline-primary rounded-pill" do %>
+                View All <i class="fa-solid fa-arrow-right ms-1"></i>
+              <% end %>
+            </div>
+
+            <% if @recent_activities.any? %>
+              <div class="list-group list-group-flush card-dashboard-button">
+                <% @recent_activities.each do |activity| %>
+                  <div class="list-group-item border-0 px-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        <h6 class="mb-0 text-capitalize"><%= activity.training_type %></h6>
+                        <small class="text-muted"><%= activity.created_at.strftime("%B %d, %Y") %></small>
+                      </div>
+                      <span class="badge bg-primary rounded-pill">
+                        <%= activity.rating %>/10
+                      </span>
+                    </div>
+                    <p class="small text-muted mt-2"><%= activity.notes %></p>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <p class="text-muted text-center my-4">No activities logged yet</p>
+            <% end %>
+            <div class="d-flex justify-content-center">
+            <%= link_to new_pet_activity_path(@pet), class: "btn btn-primary rounded-pill w-50 mt-3" do %>
+              <i class="fa-solid fa-plus me-1"></i> Log Activity
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hygiene Records Card -->
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body card--dashboard">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h5 class="card-title mb-0">Hygiene Records</h5>
+              <%= link_to pet_hygienes_path(@pet), class: "btn btn-sm btn-outline-primary rounded-pill" do %>
+                View All <i class="fa-solid fa-arrow-right ms-1"></i>
+              <% end %>
+            </div>
+
+            <% if @hygiene_records.any? %>
+              <div class="list-group list-group-flush card-dashboard-button">
+                <% @hygiene_records.each do |hygiene| %>
+                  <div class="list-group-item border-0 px-0">
+                    <h6 class="mb-1 text-capitalize"><%= hygiene.hygiene_type %></h6>
+                    <p class="mb-1 small"><%= hygiene.date.strftime("%B %d, %Y") %> - <%= hygiene.frequency %> times</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <small class="text-muted"><%= hygiene.note %></small>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <p class="text-muted text-center my-4">No hygiene records yet</p>
+            <% end %>
+            <div class="d-flex justify-content-center">
+            <%= link_to new_pet_hygiene_path(@pet), class: "btn btn-primary rounded-pill w-50 mt-3" do %>
+              <i class="fa-solid fa-plus me-1"></i> Add Hygiene Record
+            <% end %>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>

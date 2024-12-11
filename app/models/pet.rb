@@ -13,6 +13,7 @@ class Pet < ApplicationRecord
   belongs_to :vet, optional: true
   has_many :treatments, dependent: :destroy
   has_many :measurements, dependent: :destroy
+  has_many :hygienes, dependent: :destroy
   # has_many :physical_records
   # has_many :nutritions
   has_many :activities, dependent: :destroy
