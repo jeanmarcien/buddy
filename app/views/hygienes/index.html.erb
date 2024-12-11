@@ -1,0 +1,67 @@
+<%= render "pets/navbar_dashboard" %>
+<div data-page-name="<%= page_name %>">
+  <div class="container-fluid text-primary py-0">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-12 col-lg-8 mx-auto text-center">
+          <h1 class="display-4 display-md-5 fw-bold mb-4">
+            Hygiene Records for <%= @pet.name %>
+          </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <% if @hygienes.any? %>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Frequency</th>
+                    <th scope="col">Notes</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @hygienes.each do |hygiene| %>
+                    <tr>
+                      <td class="text-capitalize"><%= hygiene.hygiene_type %></td>
+                      <td><%= hygiene.date.strftime("%B %d, %Y") %></td>
+                      <td><%= hygiene.frequency.present? ? hygiene.frequency : 'N/A' %></td>
+                      <td><%= hygiene.note %></td>
+                      <td>
+                        <%= link_to edit_pet_hygiene_path(@pet, hygiene), class: "btn btn-sm btn-outline-primary me-2" do %>
+                          <i class="fa-regular fa-pen-to-square"></i>
+                        <% end %>
+                        <%= link_to pet_hygiene_path(@pet, hygiene), 
+                            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                            class: "btn btn-sm btn-outline-danger" do %>
+                          <i class="fa-regular fa-trash-can"></i>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          <% else %>
+            <div class="text-center py-5">
+              <p class="mb-4">No hygiene records yet.</p>
+            </div>
+          <% end %>
+          <div class="d-flex justify-content-center gap-4">
+            <div class="text-center">
+              <%= link_to 'Back', pet_path(@pet), class: "btn btn-secondary rounded-pill" %>
+            </div>
+            <div class="text-center">
+              <%= link_to new_pet_hygiene_path(@pet), class: "btn btn-primary rounded-pill" do %>
+                <i class="fa-solid fa-plus me-2"></i>Add Hygiene Record
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # Pet Routes
   get 'profile', to: 'pets#profile', as: :profile
-  get 'health', to: 'pets#health', as: :health
+  get 'hygiene', to: 'pets#hygiene', as: :hygiene
   get 'nutrition', to: 'pets#nutrition', as: :nutrition
   get 'activities', to: 'pets#activities', as: :activities
 
@@ -22,8 +22,9 @@ Rails.application.routes.draw do
     resources :treatments
     resources :measurements
     resources :activities, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :hygienes # Ajout des routes pour les hygienes
   end
-  
+
   resources :calendars, only: [:index]
   get 'calendar_events', to: 'calendars#events'
   get 'pets/:pet_id/treatments/:id/details', to: 'treatments#details' 

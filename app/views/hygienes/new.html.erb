@@ -1,0 +1,16 @@
+<%= render "pets/navbar_dashboard" %>
+
+<div class="container-fluid text-primary py-0">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-12 col-lg-8 mx-auto text-center">
+        <h1 class="display-4 display-md-5 fw-bold mb-4">Add a new hygiene record for <%= @pet.name %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
+        <%= render "form" %>
+      </div>
+    </div>
+  </div>
+</div>
