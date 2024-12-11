@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_11_020902) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_11_013655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_11_020902) do
     t.datetime "updated_at", null: false
     t.datetime "created_at", default: -> { "now()" }, null: false
     t.index ["pet_id"], name: "index_activities_on_pet_id"
+  end
+
+  create_table "hygienes", force: :cascade do |t|
+    t.date "date"
+    t.string "frequency"
+    t.text "note"
+    t.bigint "pet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "hygiene_type", null: false
+    t.index ["pet_id"], name: "index_hygienes_on_pet_id"
   end
 
   create_table "measurements", force: :cascade do |t|
@@ -148,6 +159,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_11_020902) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "pets"
+  add_foreign_key "hygienes", "pets"
   add_foreign_key "measurements", "pets"
   add_foreign_key "nutritions", "pets"
   add_foreign_key "pets", "users"
