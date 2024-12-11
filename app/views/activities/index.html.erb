@@ -17,7 +17,8 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">Type</th>
+                    <th scope="col">Training</th>
+                    <th scope="col">Rating</th>
                     <th scope="col">Notes</th>
                     <th scope="col">Video</th>
                     <th scope="col">Actions</th>
@@ -27,10 +28,16 @@
                   <% @activities.each do |activity| %>
                     <tr>
                       <td class="text-capitalize"><%= activity.training_type %></td>
+                      <td><%= activity.rating %></td>
                       <td><%= activity.notes %></td>
                       <td>
                         <% if activity.video.attached? %>
-                          <%= video_tag activity.video, controls: true, width: 300 %>
+                          <div class="video-container" data-controller="expandable">
+                            <button class="btn btn-sm btn-outline-primary expand-button" data-action="click->expandable#toggle">Expand</button>
+                            <div class="video-content">
+                              <%= cl_video_tag activity.video.key, controls: true, width: 300 %>
+                            </div>
+                          </div>
                         <% else %>
                           <p>No video uploaded</p>
                         <% end %>
