@@ -1,5 +1,5 @@
-<%= render "pets/navbar_dashboard" %>
 <div data-page-name="<%= page_name %>">
+  <%= render "pets/navbar_dashboard" %>
   <div class="container-fluid text-primary py-0">
     <div class="container py-5">
       <div class="row">
@@ -34,7 +34,7 @@
                         <%= link_to edit_pet_hygiene_path(@pet, hygiene), class: "btn btn-sm btn-outline-primary me-2" do %>
                           <i class="fa-regular fa-pen-to-square"></i>
                         <% end %>
-                        <%= link_to pet_hygiene_path(@pet, hygiene), 
+                        <%= link_to pet_hygiene_path(@pet, hygiene),
                             data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
                             class: "btn btn-sm btn-outline-danger" do %>
                           <i class="fa-regular fa-trash-can"></i>

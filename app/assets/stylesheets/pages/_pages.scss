@@ -6,7 +6,8 @@
 [data-page-name^="pets"] nav .logo,
 [data-page-name^="measurements"] nav .logo,
 [data-page-name^="treatments"] nav .logo,
-[data-page-name^="activities"] nav .logo {
+[data-page-name^="activities"] nav .logo,
+[data-page-name^="hygienes"] nav .logo {
   color: var(--bs-orange);
   font-size: 2rem;
   font-weight: 900;
