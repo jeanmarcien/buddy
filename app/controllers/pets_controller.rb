@@ -13,6 +13,7 @@ class PetsController < ApplicationController
     @recent_measurements = @pet.measurements.order(date: :desc).limit(3)
     @active_treatments = @pet.treatments.where("end_date >= ?", Date.today).order(end_date: :asc).limit(3)
     @recent_activities = @pet.activities.order(created_at: :desc).limit(3)
+    @recent_nutritions = @pet.nutritions.order(reminder_date: :asc).limit(5)
     @hygiene_records = @pet.hygienes.order(date: :desc).limit(3)
   end
 

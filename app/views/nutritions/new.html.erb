@@ -1,0 +1,90 @@
+<%= render "pets/navbar_dashboard" %>
+<div class="container-fluid text-primary py-0">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-12 col-lg-8 mx-auto text-center">
+        <h1 class="display-4 display-md-5 fw-bold mb-4">
+          <%= @nutrition.new_record? ? "Add New Nutrition Record" : "Update Nutrition Record" %> for <%= @pet.name %>
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
+        <%= simple_form_for [@pet, @nutrition], html: { class: 'form-horizontal' } do |form| %>
+
+          <!-- Food Type -->
+          <div class="mb-4 text-center">
+            <%= form.input :food_type,
+                collection: Nutrition::FOOD_TYPES.map { |type| [type.capitalize, type] },
+                label: "<strong>Food Type</strong>".html_safe,
+                prompt: "Select Food Type",
+                required: true,
+                input_html: { class: "form-control text-center bg-white" } %>
+          </div>
+
+          <!-- Times Per Day -->
+          <div class="mb-4 text-center">
+            <%= form.input :times_per_day,
+                label: "<strong>Times per Day</strong>".html_safe,
+                required: true,
+                input_html: { class: "form-control text-center bg-white", min: 1 } %>
+          </div>
+
+          <!-- Quantity -->
+          <div class="mb-4 text-center">
+            <%= form.input :quantity,
+                label: "<strong>Quantity (cups a day / scoops a day)</strong>".html_safe,
+                required: true,
+                input_html: { class: "form-control text-center bg-white", min: 1 } %>
+          </div>
+
+          <!-- Brand -->
+          <div class="mb-4 text-center">
+            <%= form.input :brand,
+                label: "<strong>Brand</strong>".html_safe,
+                required: false,
+                input_html: { class: "form-control text-center bg-white" } %>
+          </div>
+
+          <!-- Price -->
+          <div class="mb-4 text-center">
+            <%= form.input :price,
+                label: "<strong>Price</strong>".html_safe,
+                required: false,
+                input_html: { class: "form-control text-center bg-white", step: 0.01 } %>
+          </div>
+
+          <!-- Reminder Date -->
+          <div class="mb-4 text-center">
+            <label class="form-label">
+              <strong>Reminder date to buy more (Optional)</strong>
+            </label>
+            <div class="input-group">
+              <%= form.input :reminder_date,
+                  label: false,
+                  as: :string,
+                  wrapper: false,
+                  input_html: {
+                    data: { controller: "nutrition-datepicker" },
+                    class: "form-control text-center bg-white"
+                  } %>
+              <span class="input-group-text">
+                <i class="fa-regular fa-calendar"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="d-flex justify-content-between">
+            <div class="text-center">
+              <%= link_to 'Cancel', pet_nutritions_path(@pet), class: "btn btn-secondary rounded-pill" %>
+            </div>
+            <div class="text-center">
+              <%= form.submit "Save Nutrition Log", class: "btn btn-primary rounded-pill" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

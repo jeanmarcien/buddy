@@ -1,0 +1,71 @@
+<div data-page-name="<%= page_name %>">
+  <%= render "pets/navbar_dashboard" %>
+  <div class="container-fluid text-primary py-0">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-12 col-lg-8 mx-auto text-center">
+          <h1 class="display-4 display-md-5 fw-bold mb-4">
+            Nutrition Records for <%= @pet.name %>
+          </h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <% if @nutritions.any? %>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Times per Day</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Food Type</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Reminder Date</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @nutritions.each do |nutrition| %>
+                    <tr>
+                      <td><%= nutrition.times_per_day %></td>
+                      <td><%= nutrition.quantity %> cups</td>
+                      <td class="text-capitalize"><%= nutrition.food_type.capitalize %></td>
+                      <td><%= nutrition.brand %></td>
+                      <td><%= number_to_currency(nutrition.price) if nutrition.price.present? %></td>
+                      <td><%= nutrition.reminder_date.present? ? nutrition.reminder_date.strftime("%B %d, %Y") : "No reminder set" %></td>
+                      <td>
+                        <%= link_to edit_pet_nutrition_path(@pet, nutrition), class: "btn btn-sm btn-outline-primary me-2" do %>
+                          <i class="fa-regular fa-pen-to-square"></i>
+                        <% end %>
+                        <%= link_to pet_nutrition_path(@pet, nutrition),
+                        	  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                            class: "btn btn-sm btn-outline-danger" do %>
+                          <i class="fa-regular fa-trash-can"></i>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          <% else %>
+            <div class="text-center py-5">
+              <p class="mb-4">No nutrition records logged yet.</p>
+            </div>
+          <% end %>
+
+          <div class="d-flex justify-content-center gap-4">
+            <div class="text-center">
+              <%= link_to 'Back', pet_path(@pet), class: "btn btn-secondary rounded-pill" %>
+            </div>
+            <%= link_to new_pet_nutrition_path(@pet), class: "btn btn-primary rounded-pill" do %>
+              <i class="fa-solid fa-plus me-2"></i>Add New Nutrition Record
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
