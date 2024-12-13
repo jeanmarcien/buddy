@@ -147,7 +147,7 @@
       </div>
 
       <!-- Training Activities Card -->
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="card h-100 shadow-sm">
           <div class="card-body card--dashboard">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -175,7 +175,7 @@
                 <% end %>
               </div>
             <% else %>
-              <p class="text-muted text-center my-4">No activities logged yet</p>
+              <p class="text-muted text-center my-4 card-dashboard-button">No activities logged yet</p>
             <% end %>
             <div class="d-flex justify-content-center">
             <%= link_to new_pet_activity_path(@pet), class: "btn btn-primary rounded-pill w-50 mt-3" do %>
@@ -187,7 +187,7 @@
       </div>
 
       <!-- Hygiene Records Card -->
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="card h-100 shadow-sm">
           <div class="card-body card--dashboard">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -210,11 +210,11 @@
                 <% end %>
               </div>
             <% else %>
-              <p class="text-muted text-center my-4">No hygiene records yet</p>
+              <p class="text-muted text-center my-4 card-dashboard-button">No hygiene records yet</p>
             <% end %>
             <div class="d-flex justify-content-center">
             <%= link_to new_pet_hygiene_path(@pet), class: "btn btn-primary rounded-pill w-50 mt-3" do %>
-              <i class="fa-solid fa-plus me-1"></i> Add Hygiene Record
+              <i class="fa-solid fa-plus me-1"></i> Add Hygiene
             <% end %>
             </div>
 
@@ -225,7 +225,7 @@
       </div>
       
       <!-- Card Nutrition Records -->
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="card h-100 shadow-sm">
             <div class="card-body card--dashboard ">
               <div class="d-flex justify-content-between align-items-center mb-4">
@@ -259,12 +259,13 @@
         <% end %>
       </div>
               <% else %>
-                <p class="text-muted text-center my-4">No nutrition records logged yet</p>
+                <p class="text-muted text-center my-4 card-dashboard-button">No nutrition records logged yet</p>
               <% end %>
-      
-              <%= link_to new_pet_nutrition_path(@pet), class: "btn btn-primary rounded-pill w-100 mt-3" do %>
-                <i class="fa-solid fa-plus me-1"></i> Log Nutrition
-              <% end %>
+                <div class="d-flex justify-content-center">
+                <%= link_to new_pet_nutrition_path(@pet), class: "btn btn-primary rounded-pill w-50 mt-3" do %>
+                  <i class="fa-solid fa-plus me-1"></i> Log Nutrition
+                <% end %>
+                </div>
             </div>
           </div>
         </div>
