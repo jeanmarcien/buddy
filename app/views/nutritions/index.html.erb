@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-12">
           <% if @nutritions.any? %>
-            <div class="table-responsive">
+            <div class="table-responsive table-card">
               <table class="table table-hover">
                 <thead>
                   <tr>
@@ -56,7 +56,7 @@
             </div>
           <% end %>
 
-          <div class="d-flex justify-content-center gap-4">
+          <div class="d-flex justify-content-center gap-4 mt-4">
             <div class="text-center">
               <%= link_to 'Back', pet_path(@pet), class: "btn btn-secondary rounded-pill" %>
             </div>
