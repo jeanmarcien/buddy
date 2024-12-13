@@ -2,7 +2,7 @@ class Activity < ApplicationRecord
   belongs_to :pet
   has_one_attached :video
 
-  TRAINING_TYPES = ['sit', 'stay', 'roll over', 'heel']
+  TRAINING_TYPES = ['Sit', 'Stay', 'Roll over', 'Heel']
 
   validates :training_type, inclusion: { in: TRAINING_TYPES }
 
