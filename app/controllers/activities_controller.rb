@@ -1,6 +1,11 @@
 class ActivitiesController < ApplicationController
   before_action :set_pet
-  before_action :set_activity, only: [:edit, :update, :destroy]
+  before_action :set_activity, only: [:edit, :update, :destroy, :remove_video] # ajout de remove_video ici
+  
+  def remove_video
+    @activity.video.purge
+    redirect_to edit_pet_activity_path(@pet, @activity), notice: 'Video was successfully removed.'
+  end
 
   def index
     @activities = @pet.activities
@@ -31,7 +36,6 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
-    @activity = @pet.activities.find(params[:id])
     @activity.destroy
     redirect_to pet_activities_path(@pet), notice: 'Activity deleted successfully!'
   end
