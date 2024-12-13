@@ -7,10 +7,15 @@
 [data-page-name^="measurements"] nav .logo,
 [data-page-name^="treatments"] nav .logo,
 [data-page-name^="activities"] nav .logo,
-[data-page-name^="hygienes"] nav .logo {
+[data-page-name^="hygienes"] nav .logo,
+[data-page-name^="nutritions"] nav .logo {
   color: var(--bs-orange);
   font-size: 2rem;
   font-weight: 900;
   letter-spacing: 0.01em;
   text-decoration: none;
+}
+
+.table-card {
+  max-height: 220px;
 }
