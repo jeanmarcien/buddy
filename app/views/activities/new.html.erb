@@ -1,3 +1,46 @@
 <div data-page-name="<%= page_name %>">
-	<%= render "form" %>
+	<%= render "pets/navbar_dashboard" %>
+	<div class="container-fluid text-primary py-0">
+	  <div class="container py-5">
+		<div class="row">
+		  <div class="col-12 col-lg-8 mx-auto text-center">
+			<h1 class="display-4 display-md-5 fw-bold mb-4">Add a new activity for <%= @pet.name %></h1>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
+			<%= form_with model: [@pet, @activity], local: true, authenticity_token: true, html: { class: 'form-horizontal' } do |form| %>
+			  <div class="mb-4 text-center">
+				<%= form.label :training_type, "<strong>Training Type</strong>".html_safe, class: "form-label" %>
+				<%= form.select :training_type, Activity::TRAINING_TYPES, { prompt: "Select Training Type" }, class: "form-select text-center bg-white" %>
+			  </div>
+	
+			  <div class="mb-4 text-center">
+				<%= form.label :rating, "<strong>Rating (1-10)</strong>".html_safe, class: "form-label" %>
+				<%= form.number_field :rating, min: 1, max: 10, required: true, class: "form-control text-center bg-white" %>
+			  </div>
+	
+			  <div class="mb-4 text-center">
+				<%= form.label :notes, "<strong>Notes</strong>".html_safe, class: "form-label" %>
+				<%= form.text_area :notes, rows: 3, class: "form-control text-center bg-white" %>
+			  </div>
+	
+			  <div class="mb-4 text-center">
+				<%= form.label :video, "<strong>Upload Video</strong>".html_safe, class: "form-label" %>
+				<%= form.file_field :video, class: "form-control text-center bg-white" %>
+			  </div>
+	
+			  <div class="d-flex justify-content-between">
+				<div class="text-center">
+				  <%= link_to 'Cancel', pet_path(@pet), class: "btn btn-secondary rounded-pill" %>
+				</div>
+				<div class="text-center">
+				  <%= form.submit "Save Training Log", class: "btn btn-primary rounded-pill" %>
+				</div>
+			  </div>
+			<% end %>
+		  </div>
+		</div>
+	  </div>
+	</div>
 </div>
