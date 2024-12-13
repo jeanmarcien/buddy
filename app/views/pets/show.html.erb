@@ -223,7 +223,7 @@
 
 
       </div>
-      
+
       <!-- Card Nutrition Records -->
         <div class="col-md-6">
           <div class="card h-100 shadow-sm">
@@ -234,7 +234,7 @@
                   View All <i class="fa-solid fa-arrow-right ms-1"></i>
                 <% end %>
               </div>
-      
+
               <% if @recent_nutritions.any? %>
                 <div class="list-group list-group-flush card-dashboard-button">
         <% @recent_nutritions.each do |nutrition| %>
@@ -261,15 +261,16 @@
               <% else %>
                 <p class="text-muted text-center my-4">No nutrition records logged yet</p>
               <% end %>
-      
-              <%= link_to new_pet_nutrition_path(@pet), class: "btn btn-primary rounded-pill w-100 mt-3" do %>
+              <div class="d-flex justify-content-center">
+              <%= link_to new_pet_nutrition_path(@pet), class: "btn btn-primary rounded-pill w-50 mt-3" do %>
                 <i class="fa-solid fa-plus me-1"></i> Log Nutrition
               <% end %>
+              </div>
             </div>
           </div>
         </div>
     </div>
   </div>
 
- 
+
 </div>
