@@ -24,3 +24,28 @@ body {
 .card-dashboard-button {
   flex: 1;
 }
+
+.table-card {
+  max-height: 220px;
+}
+
+.card--dashboard {
+  min-height: 286px;
+}
+
+@media (max-width: 768px) {
+  /* Pour les écrans de taille tablette et moins */
+  .card--dashboard {
+    min-height: auto; /* ou min-height: unset; */
+  }
+}
+
+@media (max-width: 1199px) {
+  .btn.w-50 {
+    width: 100% !important;
+  }
+
+  .btn.w-25 {
+    width: 50% !important;
+  }
+}
