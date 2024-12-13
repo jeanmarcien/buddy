@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'hygiene', to: 'pets#hygiene', as: :hygiene
   get 'nutrition', to: 'pets#nutrition', as: :nutrition
   get 'activities', to: 'pets#activities', as: :activities
+  
 
   # Routes pour les vétérinaires
   resources :vets do
@@ -21,7 +22,11 @@ Rails.application.routes.draw do
     get 'calendar', on: :member
     resources :treatments
     resources :measurements
-    resources :activities, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :activities, only: [:index, :new, :create, :edit, :update, :destroy] do
+      member do
+        delete :remove_video
+      end
+    end
     resources :nutritions, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :hygienes # Ajout des routes pour les hygienes
   end
