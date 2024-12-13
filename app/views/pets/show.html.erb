@@ -223,7 +223,7 @@
 
 
       </div>
-      
+
       <!-- Card Nutrition Records -->
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
@@ -234,7 +234,7 @@
                   View All <i class="fa-solid fa-arrow-right ms-1"></i>
                 <% end %>
               </div>
-      
+
               <% if @recent_nutritions.any? %>
                 <div class="list-group list-group-flush card-dashboard-button">
         <% @recent_nutritions.each do |nutrition| %>
@@ -251,7 +251,7 @@
                 </small>
               </div>
               <span class="badge bg-primary rounded-pill">
-                <%= nutrition.quantity %>cups x <%= nutrition.times_per_day %> times
+                <%= nutrition.quantity %> cups x <%= nutrition.times_per_day %> times
               </span>
             </div>
             <p class="small text-muted mt-2"><%= nutrition.brand %></p>
@@ -272,5 +272,5 @@
     </div>
   </div>
 
- 
+
 </div>
