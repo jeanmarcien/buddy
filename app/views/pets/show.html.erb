@@ -248,12 +248,12 @@
             <% if nutrition.reminder_date.present? %>
               <%= nutrition.reminder_date.strftime("%B %d, %Y") %> (Reminder)
             <% else %>
-              No reminder set
+
             <% end %>
           </small>
         </div>
         <span class="badge bg-primary rounded-pill">
-          <%= nutrition.quantity %>cups x <%= nutrition.times_per_day %> times
+          <%= nutrition.quantity %> cups a day
         </span>
       </div>
       <p class="small text-muted mt-2"><%= nutrition.brand %></p>
